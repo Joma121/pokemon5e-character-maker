@@ -1,5 +1,7 @@
 # Pokemon 5e Character Creator
 
+<img src="./README/Poke-Ball_DND3_Large" height="200" />
+
 <h2>Introduction</h2>
 
 This application is a character creator for the Dungeons & Dragons 5th Edition supplement for Pokemon. Users will be able to create their own Trainer characters using Pokemon 5e Character Creator.

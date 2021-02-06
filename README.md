@@ -1,6 +1,6 @@
 # Pokemon 5e Character Creator
 
-<img src="./README/Poke-Ball_DND3_Large.PNG" height="200" />
+<img src="./README/Poke-Ball_DND3_Large.png" height="200" />
 
 <h2>Introduction</h2>
 

@@ -1,0 +1,91 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://kit.fontawesome.com/dc669676ae.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="../static/style.css" />
+    </head>
+        <body>
+            <main>
+                <nav class="navbar pokeball-black">
+                    <div class="navbar-brand">
+                        <a href="{% url 'home' %}" class="navbar-item">
+                            <img src="{% static 'images/brand-nav.png' %}" alt="brand image"/>
+                        </a>
+                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div class="navbar-menu">
+                    <div class="navbar-start"></div>
+                        <div class="navbar-end">
+                            <a href="{% url 'home' %}" class="navbar-item nav-color">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-home"></i>
+                                    </span>
+                                    <span>Home</span>
+                                </span>
+                            </a>
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a href="{% url 'all_characters' %}" class="navbar-link">
+                                    <span class="icon-text">
+                                        <span class="icon">
+                                            <i class="fas fa-users"></i>
+                                        </span>
+                                        <span>Characters</span>
+                                    </span>
+                                </a>
+                                <div class="navbar-dropdown">
+                                    <a href="{% url 'all_characters' %}" class="navbar-item">
+                                        All Characters
+                                    </a>
+                                    {% if user.is_authenticated %}
+                                    <a href="{% url 'my_characters' %}" class="navbar-item">
+                                        My Characters
+                                    </a>
+
+                                    <a href="{% url 'new_character' %}" class="navbar-item">
+                                        Create Character
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="navbar-item">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </span>
+                                    <span>Logout</span>
+                                </span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'signup' %}" class="navbar-item">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </span>
+                                    <span>Signup</span>
+                                </span>
+                            </a>
+                            <a href="{% url 'login' %}" class="navbar-item">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                    </span>
+                                    <span>Login</span>
+                                </span>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </nav>
+            </main>
+            {% block content %}
+            {% endblock %}
+        </body>
+    </html>

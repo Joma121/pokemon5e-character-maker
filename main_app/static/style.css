@@ -1,0 +1,12 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+
+.pokeball-black {
+    background-color: #222224;
+}
+.nav-color {
+    color: #f0f0f0 !important; 
+}
+
+.has-dopdown .is-hoverable {
+ color: #f0f0f0 !important;
+}

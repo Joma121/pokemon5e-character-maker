@@ -1,12 +1,41 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
 
+
+/* Navbar adjustments */
 .pokeball-black {
     background-color: #222224;
 }
-.nav-color {
-    color: #f0f0f0 !important; 
+
+.navbar-menu.is-active {
+    
+    background-color: #222224;
 }
 
-.has-dopdown .is-hoverable {
- color: #f0f0f0 !important;
+.navbar-item, .navbar-link {
+    color: #f0f0f0 !important;
+}
+.navbar-item.has-dropdown:hover .navbar-link  {
+    background-color: #222224;
+}
+.navbar-link:hover {
+    background-color: #ee1515 !important;
+}
+
+.navbar-dropdown {
+    border-color: grey;
+    background-color: #222224;    
+}
+
+.navbar-item:hover {
+    background-color: #ee1515 !important;
+}
+
+.navbar-link:not(.is-arrowless)::after {
+    border-color: #f0f0f0;
+}
+/* End Navbar */
+
+/* Home page */
+#brand-large {
+    width: 60vw;
 }

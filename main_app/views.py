@@ -15,12 +15,3 @@ def my_characters(request):
 def new_character(request):
     return render(request, 'new_character.html')
     
-
-def signup(request):
-    return render(request, 'signup.html')
-
-def login(request):
-    return render(request, 'login.html')
-    
-def logout(request):
-    return render(request, 'new_character.html')

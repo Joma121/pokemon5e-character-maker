@@ -98,8 +98,3 @@ button {
 button:hover {
     transform: scale(1.05);
 }
-
-
-.navbar-item.has-dropdown.is-hoverable {
-    border-right: solid 2px grey;
-}

@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<section class="section">
+<section class="section is-medium">
     <div class="columns is-mobile">
-        <div class="column is-half is-offset-one-quarter">
-            <div class="box has-text-centered">
-                <h2 class="title">Login</h2>
-                <form method="POST">
-                    {% csrf_token %}
-                    {{form.as_p}} 
-                    <button type="submit">Login</button>
-                </form>
-            </div>
+        <div class="box container login-box">
+            <h2 class="title has-text-centered">Login</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}} 
+                    <hr/>
+                <div class="has-text-centered"> 
+                    <button type="submit" class="button login-button">Login</button>
+                </div>
+            </form>
         </div>
     </div>
 </section>

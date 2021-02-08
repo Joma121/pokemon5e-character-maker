@@ -70,8 +70,36 @@ min-height: calc(100vh - 200px);
     max-width: 300px;
 }
 
+.login-button {
+    background-color: #ee1515;
+    color: #f0f0f0;
+}
 
+.login-button:hover {
+    color: #f0f0f0;
+}
 /* Signup page */
 .box.container.signup-box {
     max-width: 300px;
+}
+
+.signup-button {
+    background-color: #ee1515;
+    color: #f0f0f0;
+}
+.signup-button:hover {
+    color: #f0f0f0;
+}
+
+/* buttons scale */
+button {
+    transition: all .2s ease-in-out;
+}
+button:hover {
+    transform: scale(1.05);
+}
+
+
+.navbar-item.has-dropdown.is-hoverable {
+    border-right: solid 2px grey;
 }

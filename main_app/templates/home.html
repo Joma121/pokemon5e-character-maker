@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
 <section class="section">
     <div class="columns is-mobile">
         <div class="column is-half is-offset-one-quarter">
-            <img id="brand-large" src="../static/images/Brand_Large.png" alt="Large Brand image"/>
+            <img id="brand-large" src="{% static 'images/Brand_Large.png' %}" alt="Large Brand image"/>
 
             <h1 class="title has-text-centered">
                 Pokemon 5e Character Creator

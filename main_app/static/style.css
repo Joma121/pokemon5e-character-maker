@@ -1,5 +1,7 @@
+/* ==Imports== */
+/* Bulma */
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
-
+/* ==Imports End== */
 
 /* Navbar adjustments */
 .pokeball-black {
@@ -42,5 +44,34 @@
     justify-content: center;
 }
 
+/* Body */
+body {
+    margin: 0;
+}
+main {
+min-height: calc(100vh - 200px);
+}
+
+/* Footer */
+.footer {
+    max-height: 50px !important;
+}
 
 /* Home page */
+
+
+/* Auth error */
+.errorlist {
+    color: #f14668;
+}
+
+/* Login page */
+.box.container.login-box {
+    max-width: 300px;
+}
+
+
+/* Signup page */
+.box.container.signup-box {
+    max-width: 300px;
+}

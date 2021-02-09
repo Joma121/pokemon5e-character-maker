@@ -1,0 +1,194 @@
+[
+    {
+        "model": "main_app.ability", 
+        "pk": 1, 
+        "fields": 
+        {
+            "name": "Strength"
+        }
+    },
+    {
+        "model": "main_app.ability", 
+        "pk": 2, 
+        "fields": 
+        {
+            "name": "Dexterity"
+        }
+    },
+    {
+        "model": "main_app.ability",
+        "pk": 3, 
+        "fields": 
+        {
+            "name": "Constitution"
+        }
+    },
+    {
+        "model": "main_app.ability", 
+        "pk": 4, 
+        "fields": 
+        {
+            "name": "Intelligence"
+        }
+    },
+    {
+        "model": "main_app.ability", 
+        "pk": 5, 
+        "fields": 
+        {
+            "name": "Wisdom"
+        }
+    },
+    {
+        "model": "main_app.ability", 
+        "pk": 6, 
+        "fields": 
+        {
+            "name": "Charisma"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 1, 
+        "fields": 
+        {
+            "name": "Acrobatics"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 2, 
+        "fields": 
+        {
+            "name": "Animal Handling"
+        }
+    },
+    {
+        "model": "main_app.skill",
+        "pk": 3, 
+        "fields": 
+        {
+            "name": "Arcana"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 4, 
+        "fields": 
+        {
+            "name": "Athletics"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 5, 
+        "fields": 
+        {
+            "name": "Deception"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 6, 
+        "fields": 
+        {
+            "name": "History"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 7, 
+        "fields": 
+        {
+            "name": "Insight"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 8, 
+        "fields": 
+        {
+            "name": "Intimidation"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 9, 
+        "fields": 
+        {
+            "name": "Investigation"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 10, 
+        "fields": 
+        {
+            "name": "Medicine"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 11, 
+        "fields": 
+        {
+            "name": "Nature"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 12, 
+        "fields": 
+        {
+            "name": "Perception"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 13, 
+        "fields": 
+        {
+            "name": "Performance"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 14, 
+        "fields": 
+        {
+            "name": "Persuasion"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 15, 
+        "fields": 
+        {
+            "name": "Religion"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 16, 
+        "fields": 
+        {
+            "name": "Sleight of Hand"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 17, 
+        "fields": 
+        {
+            "name": "Stealth"
+        }
+    },
+    {
+        "model": "main_app.skill", 
+        "pk": 18, 
+        "fields": 
+        {
+            "name": "Survival"
+        }
+    }
+]

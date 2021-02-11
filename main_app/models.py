@@ -2,7 +2,10 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here.
-
+class CustomUser(AbstractUser):
+    
+    def __str__(self):
+        return self.email
 
 # Ability Stats > Strength, Constitution, Wisdom, etc
 class Ability(models.Model):
@@ -18,6 +21,9 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+        
+    class Meta:
+        ordering = ['name']
     
 # Languages > Hinoan, Common, etc
 class Language(models.Model):
@@ -25,6 +31,9 @@ class Language(models.Model):
 
     def __str__(self):
         return self.name
+        
+    class Meta:
+        ordering = ['name']
     
 # Pokemon Type > Grass, Fire, Dragon, etc
 class PokemonType(models.Model):
@@ -32,6 +41,9 @@ class PokemonType(models.Model):
 
     def __str__(self):
         return self.name
+        
+    class Meta:
+        ordering = ['name']
     
 # Pokemon moves > Scratch, Ember, Vine Whip, etc
 class Move(models.Model):
@@ -39,28 +51,18 @@ class Move(models.Model):
 
     def __str__(self):
         return self.name
+        
+    class Meta:
+        ordering = ['name']
 
-
-class RaceFeature(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField(max_length=500)
-    short_description = models.TextField(max_length=200)
-    is_skill_proficiency = models.BooleanField()
-    is_ability_bonus = models.BooleanField()
-    modifies = models.CharField(max_length=100)
+class EggGroup(models.Model):
+    name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
-
-
-class ClassFeature(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField(max_length=600)
-    level_acquired = models.IntegerField()
-
-    def __str__(self):
-        return self.name
-
+        
+    class Meta:
+        ordering = ['name']
 
 class PokemonAbility(models.Model):
     name = models.CharField(max_length=20)
@@ -80,34 +82,61 @@ class Race(models.Model):
     wisdom_bonus = models.IntegerField()
     intelligence_bonus = models.IntegerField()
     charisma_bonus = models.IntegerField()
-    race_feature = models.ForeignKey(RaceFeature, on_delete=models.SET_NULL, null=True)
     languages = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+
+class RaceFeature(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.TextField(max_length=500)
+    short_description = models.TextField(max_length=200)
+    is_skill_proficiency = models.BooleanField()
+    is_ability_bonus = models.BooleanField()
+    modifies = models.CharField(max_length=100)
+    race = models.ForeignKey(Race, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['id']
 
 class TrainerClass(models.Model):
     name = models.CharField(max_length=10)
     level = models.IntegerField(default=1)
     hit_dice = models.IntegerField(default=8)
-    skill_proficiencies = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True)
     proficiency_bonus = models.IntegerField()
-    features = models.ForeignKey(ClassFeature, on_delete=models.SET_NULL, null=True)
     pokeslots = models.IntegerField()
     max_specie_rating = models.IntegerField()
+    skill_proficiencies = models.ManyToManyField(Skill)
 
     def __str__(self):
         return self.name
 
+class ClassFeature(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.TextField(max_length=600)
+    level_acquired = models.IntegerField()
+    trainer_class = models.ForeignKey(TrainerClass, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.name
+        
+    class Meta:
+        ordering = ['id']
+
 class Specialization(models.Model):
     name = models.CharField(max_length=20)
     description = models.TextField(max_length=500)
-    pokemon_type = models.ForeignKey(PokemonType, on_delete=models.SET_NULL, null=True)
-    ability = models.ForeignKey(Ability, on_delete=models.SET_NULL, null=True)
-    skill = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True)
+    ability = models.ManyToManyField(Ability)
+    skill = models.ManyToManyField(Skill)
     bonus_value = models.IntegerField()
     is_other_bonus = models.BooleanField()
+    pokemon_type = models.ForeignKey(PokemonType, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
@@ -133,10 +162,8 @@ class Pokemon(models.Model):
     name = models.CharField(max_length=20)
     number = models.IntegerField()
     description = models.TextField(max_length=500)
-    pokemon_type = models.ForeignKey(PokemonType, on_delete=models.SET_NULL, null=True)
     classification = models.CharField(max_length=30)
     specie_rating = models.CharField(max_length=5)
-    egg_group = models.ForeignKey(PokemonType, related_name='egg_type', on_delete=models.SET_NULL, null=True)
     male_rate = models.IntegerField()
     female_rate = models.IntegerField()
     evolution_stage = models.IntegerField()
@@ -154,31 +181,24 @@ class Pokemon(models.Model):
     intelligence = models.IntegerField()
     wisdom = models.IntegerField()
     charisma = models.IntegerField()
-    proficient_skills = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True)
-    ability_saving_throws = models.ForeignKey(Ability, on_delete=models.SET_NULL, null=True)
-    vulnerability_type = models.ForeignKey(PokemonType, related_name='vulnerable_type', on_delete=models.SET_NULL, null=True)
-    resistance_types = models.ForeignKey(PokemonType, related_name='resistant_type', on_delete=models.SET_NULL, null=True)
     can_evolve = models.BooleanField()
     evolution_description = models.TextField(max_length=600)
-    starting_moves = models.ForeignKey(Move, on_delete=models.SET_NULL, null=True)
+    pokemon_type = models.ManyToManyField(PokemonType)
+    egg_group = models.ManyToManyField(EggGroup)
+    proficient_skills = models.ManyToManyField(Skill)
+    ability_saving_throws = models.ManyToManyField(Ability)
+    vulnerability_type = models.ManyToManyField(PokemonType, related_name='vulnerable_type')
+    resistance_types = models.ManyToManyField(PokemonType, related_name='resistant_type')
+    starting_moves = models.ManyToManyField(Move)
 
     def __str__(self):
         return self.name
-
-class CharacterItem(models.Model):
-    trainer_license = models.BooleanField()
-    pokedex = models.BooleanField()
-    pokeballs = models.IntegerField()
-    potions = models.IntegerField()
-    pokedollars = models.IntegerField()
-    pack = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.name
+        
+    class Meta:
+        ordering = ['number']
 
 class Character(models.Model):
     name = models.CharField(max_length=20)
-    race = models.ForeignKey(Race, on_delete=models.SET_NULL, null=True)
     level = models.IntegerField()
     alignment = models.CharField(max_length=20)
     lifestyle = models.CharField(max_length=60)
@@ -189,27 +209,24 @@ class Character(models.Model):
     weight = models.CharField(max_length=10)
     age = models.CharField(max_length=30)
     notes = models.TextField(max_length=1000)
-    skill_proficiencies = models.ForeignKey(Skill, on_delete=models.SET_NULL, null=True)
-    proficiency_bonus = models.IntegerField()
-    features = models.ForeignKey(ClassFeature, on_delete=models.SET_NULL, null=True)
-    pokeslots = models.IntegerField()
-    max_specie_rating = models.IntegerField()
-    items = models.OneToOneField(CharacterItem, on_delete=models.CASCADE)
-    specialization = models.ForeignKey(Specialization, on_delete=models.SET_NULL, null=True)
-    path = models.OneToOneField(TrainerPath, on_delete=models.SET_NULL, null=True)
     strength = models.IntegerField()
     dexterity = models.IntegerField()
     constitution = models.IntegerField()
     intelligence = models.IntegerField()
     wisdom = models.IntegerField()
     charisma = models.IntegerField()
-    starter_pokemon = models.OneToOneField(Pokemon, on_delete=models.SET_NULL, null=True)
+    trainer_license = models.BooleanField()
+    pokedex = models.BooleanField()
+    pokeballs = models.IntegerField()
+    potions = models.IntegerField()
+    pokedollars = models.IntegerField()
+    pack = models.CharField(max_length=30)
+    race = models.ForeignKey(Race, on_delete=models.SET_NULL, null=True)
+    trainer_class = models.ForeignKey(TrainerClass, on_delete=models.SET_NULL, null=True)
+    specialization = models.ForeignKey(Specialization, on_delete=models.SET_NULL, null=True)
+    path = models.ForeignKey(TrainerPath, on_delete=models.SET_NULL, null=True)
+    starter_pokemon = models.ForeignKey(Pokemon, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
-
-class CustomUser(AbstractUser):
-    character = models.ForeignKey(Character, on_delete=models.SET_NULL, null=True)
-    
-    def __str__(self):
-        return self.email

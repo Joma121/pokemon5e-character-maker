@@ -1,0 +1,374 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<section class="section">
+    <div class="columns is-mobile">
+        <div class="column is-10 is-offset-1">
+            <ul class="steps is-medium has-gaps has-content-centered">
+                <li class="steps-segment is-active">
+                    <a class="steps-marker race-box is-hollow">
+                        <i class="fas fa-street-view"></i>
+                    </a>
+                    <div class="steps-content">
+                        <p></p>
+                        <p class="">Race</p>
+                    </div>
+                </li>
+                <li class="steps-segment">
+                    <a class="steps-marker trainer-box">
+                        <i class="fas fa-walking"></i>
+                    </a>
+                    <div class="steps-content">
+                        <p></p>
+                        <p class="">Trainer</p>
+                    </div>
+                </li>
+                {% comment %} <li class="steps-segment">
+                    <a  class="steps-marker">
+                        <i class="fas fa-street-view"></i>
+                    </a>
+                    <div class="steps-content">
+                        <p></p>
+                        <p class="">Specialization</p>
+                    </div>
+                </li> {% endcomment %}
+                {% comment %} <li class="steps-segment">
+                    <a  class="steps-marker">
+                        <i class="fas fa-street-view"></i>
+                    </a>
+                    <div class="steps-content">
+                        <p></p>
+                    <p class="">Path</p>
+                    </div>
+                </li> {% endcomment %}
+                <li class="steps-segment">
+                    <a class="steps-marker ability-box">
+                        <i class="icon-muscles"></i>
+                    </a>
+                    <div class="steps-content">
+                        <p></p>
+                        <p class="">Abilities</p>
+                    </div>
+                </li>
+                <li class="steps-segment">
+                    <a class="steps-marker pokemon-box">
+                        <i class="icon-pokeball2"></i>
+                    </a>
+                    <div class="steps-content">
+                        <p></p>
+                        <p class="">Pokemon</p>
+                    </div>
+                </li>
+                <li class="steps-segment">
+                    <a class="steps-marker description-box">
+                        <i class="fas fa-file-alt"></i>
+                    </a>
+                    <div class="steps-content">
+                        <p></p>
+                        <p class="">Description</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="columns is-mobile">
+        <div class="column is-8 is-offset-2">
+            <form method="POST">
+            {% csrf_token %}
+            <div class="race-box display-area" id="race-box">
+                <div class="content header-bar">
+                    <p class="is-size-5">Race</p>
+                </div>
+                <div class="display-description">
+                    <p>Please select a race:</p>
+                </div>
+                <section class="section">
+                {% for race in races %}
+                    {% if race.name != "none" %}
+                    <div class="card race-card">
+                        <header data-target="#{{race.name}}-card" class="card-header is-hidden-fullscreen" data-action="collapse">
+                                <p class="card-header-title">
+                                    {{race.name}} <span class="is-pulled-right"><i class="fas fa-plus is-pulled-right"></i></span>
+                                </p>
+                        </header>
+                        <div id="{{race.name}}-card" class="is-collapsible">
+                            <div class="card-content">
+                                <p class="block">
+                                    {{race.description}}
+                                </p>
+                                {% for racefeature in raceFeatures %}
+                                    {% if racefeature.race == race %}
+                                    <article class="message">
+                                            <div class="message-header" data-target="#div-{{racefeature.id}}" data-action="collapse-race">
+                                                {{racefeature.name}} <i class="fas fa-plus is-pulled-right"></i>
+                                            </div>
+                                            <div id="div-{{racefeature.id}}" class="message-body is-collapsible">
+                                                <div class="message-body-content">
+                                                    <p class="block rf-short">{{racefeature.short_description}}</p>
+                                                    <p class="">{{racefeature.description}}</p>
+                                                </div>
+                                            </div>
+                                    </article>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="card-footer is-desktop">
+                                <div id="race-{{race.id}}" class="button select-race" data-action="select">Select {{race.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </section>
+            </div>
+            <div class="trainer-box display-area" id="trainer-box">
+                <div class="content header-bar">
+                    <p class="is-size-5">Trainer</p>
+                </div>
+                <div class="display-description">
+                    <p>The Pokémon Trainer class has the following features:</p>
+                </div>
+                <section class="section">
+                    <div class="columns is-mobile">
+                        <div class="column">
+                            <div class="title is-4 piece-header">
+                                <p>Hit Points</p>
+                            </div>
+                            <div class="content">
+                                <span class="bold-me">Hit Die:</span> d{{trainer.hit_dice}}<br>
+                                <span class="bold-me">Hit Points at Level 1:</span> 8 + Constitution Modifier<br>
+                                <span class="bold-me">Hit Points when levelling:</span> 1d8 + Constitution Modifier
+                            </div>
+                            
+                        <div class="title is-4 piece-header">
+                            <p>Proficiencies</p>
+                        </div>
+                        <div class="content">
+                            <span class="bold-me">Armor:</span> None <br>
+                            <span class="bold-me">Weapons:</span> None <br>
+                            <span class="bold-me">Saving Throws:</span> Charisma <br>
+                            <span class="bold-me">Skills:</span> Animal Handling <br>
+                            <span class="bold-me">Choose 2 More Skills:</span> 
+                            <select name="skill-one" id="skill1">
+                                {% for skill in skills %}
+                                    {% if skill.name != "Animal Handling" %}
+                                        <option value="{{skill.id}}">{{skill.name}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <select name="skill-two" id="skill2">
+                                {% for skill in skills %}
+                                    {% if skill.name != "Animal Handling" %}
+                                        <option value="{{skill.id}}">{{skill.name}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        </div>
+                        <div class="column">
+                            <div class="title is-4 piece-header">
+                                <p>Starting Equipment</p>
+                            </div>
+                            <div class="content">
+                                <input type="checkbox" name="trainers-license" id="trainers-license" {% if trainer.trainer_license %}checked{% endif %}>
+                                <span>Trainer License</span> 
+                                <br>
+                                <input type="checkbox" name="pokedex" id="pokedex" {% if trainer.pokedex %}checked{% endif %}>
+                                <span>Pokedex</span>
+                                <br>
+                                <input type="number" max="99" min="0" name="pokeballs" id="pokeballs" value="5"/>
+                                <span>Pokeball(s)</span>
+                                <br>
+                                <input type="number" max="99" min="0" name="potions" id="potions" value="1"/>
+                                <span>Potion(s)</span>
+                                <br>
+                                <input type="number" max="99" min="0" name="pokedollars" id="pokedollars" value=""/>
+                                <span>Pokedollar(s), 1000 + (100*4d4)</span>
+                                <br>
+                                <select name="pack" id="pack">
+                                    <option value="Dungeoneer">Dungeoneer Pack</option>
+                                    <option value="Explorer">Explorer Pack</option>
+                                    <option value="Filcher">Filcher Pack</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    
+                    <div id="trainer-features" class="title is-4 piece-header">
+                        Trainer Features <i class="fas fa-plus is-pulled-right"></i>
+                    </div>
+                    <div class="content indent is-collapsible">
+                        {% for trainerfeature in trainerFeatures %}
+                            <article class="message">
+                                    <div class="message-header" data-target="#div-t{{trainerfeature.id}}" data-action="collapse-trainer">
+                                        {{trainerfeature.name}} <i class="fas fa-plus is-pulled-right"></i>
+                                    </div>
+                                    <div id="div-t{{trainerfeature.id}}" class="message-body is-collapsible">
+                                        <div class="message-body-content">
+                                            <p class="block rf-short"><span class="bold-me">Level Acquired:</span> {{trainerfeature.level_acquired}}</p>
+                                            <p class="">{{trainerfeature.description}}</p>
+                                        </div>
+                                    </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+                    
+                    <div id="specializations" class="title is-4 piece-header">
+                        Specializations <i class="fas fa-plus is-pulled-right"></i>
+                    </div>
+                    <div class="content indent is-collapsible">
+                        {% for specialization in specializations %}
+                            <article class="message spec-message">
+                                    <div class="message-header" data-target="#div-s{{specialization.id}}" data-action="collapse-trainer">
+                                        {{specialization.name}} <i class="fas fa-plus is-pulled-right"></i>
+                                    </div>
+                                    <div id="div-s{{specialization.id}}" class="message-body is-collapsible">
+                                        <div class="message-body-content">
+                                            <p class="">{{specialization.description}}</p>
+                                        </div>
+                                        <div class="message-footer is-pulled-right">
+                                            <div id="spec-{{specialization.id}}" class="button select-spec" data-action="select">Select {{specializations.name}}</div>
+                                        </div>
+                                    </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+            <div class="ability-box display-area" id="ability-box">
+                <div class="content header-bar">
+                    <p class="is-size-5">Abilities</p>
+                </div>
+                <div class="display-description">
+                    <p>Please enter your rolled or point-buy ability results:</p>
+                </div>
+                <section class="section" id="ability-content">
+                    <div>
+                        <input type="number" value="10" max="20" min="1" name="strength" id="strength-input">
+                        <label for="strength-input" class="label">Strength</label>
+                    </div>
+                    <div>
+                        <input type="number" value="10" max="20" min="1" name="dexterity" id="dexterity-input">
+                        <label for="dexterity-input" class="label">Dexterity</label>
+                    </div>
+                    <div>
+                        <input type="number" value="10" max="20" min="1" name="constitution" id="constitution-input">
+                        <label for="constitution-input" class="label">Constitution</label>
+                    </div>
+                    <div>
+                        <input type="number" value="10" max="20" min="1" name="intelligence" id="intelligence-input">
+                        <label for="intelligence-input" class="label">Intelligence</label>
+                    </div>
+                    <div>
+                        <input type="number" value="10" max="20" min="1" name="wisdom" id="wisdom-input">
+                        <label for="wisdom-input" class="label">Wisdom</label>
+                    </div>
+                    <div>
+                        <input type="number" value="10" max="20" min="1" name="charisma" id="charisma-input">
+                        <label for="charisma-input" class="label">Charisma</label>
+                    </div>
+                </section>
+            </div>
+            <div class="pokemon-box display-area" id="pokemon-box">
+                <div class="content header-bar">
+                    <p class="is-size-5">Pokemon</p>
+                </div>
+                <div class="display-description">
+                    <p>Choose your starting Pokemon:</p>
+                </div>
+                <section class="section">
+                    {% for pokemon in pokemons %}
+                        <div class="card" id="pokemon-card">
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content" id="pokemon-stats">
+                                        <div class="pokemon-name">
+                                            <p class="title is-4">{{pokemon.name}} #{{pokemon.number}}</p>
+                                            <p class="is-6"><span class="bold-me">Classification: </span>{{pokemon.classification}}, SR {{pokemon.specie_rating}}</p>
+                                            <p class="is-6"><span class="bold-me">Evolution Stage: </span>{{pokemon.evolution_stage}}/{{pokemon.max_evolution_stage}}, ASI {{pokemon.ability_score_increase}}</p>
+                                        </div>
+                                        <div>
+                                            <p><span class="bold-me">STR:</span> {{pokemon.strength}}</p>
+                                            <p><span class="bold-me">DEX:</span> {{pokemon.dexterity}}</p>
+                                            <p><span class="bold-me">CON:</span> {{pokemon.constitution}}</p>
+                                        </div>
+                                        <div>
+                                            <p><span class="bold-me">INT:</span> {{pokemon.intelligence}}</p>
+                                            <p><span class="bold-me">WIS:</span> {{pokemon.wisdom}}</p>
+                                            <p><span class="bold-me">CHA:</span> {{pokemon.charisma}}</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="media-content">
+                                    {{pokemon.description}}
+                                </div>
+                            </div>
+                            <div id="sideways">
+                                <div id="poke-{{pokemon.id}}" class="button is-large select-pokemon" data-action="select">Choose</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </section>
+            </div>
+            <div class="description-box display-area" id="description-box">
+                <div class="content header-bar">
+                    <p class="is-size-5">Description</p>
+                </div>
+                <div class="display-description">
+                    <p>Describe your Trainer:</p>
+                </div>
+                <section class="section">
+                    <div>
+                        <label for="hair-input" class="label">Hair</label>
+                        <input type="Text" name="hair" id="hair-input" class="input">
+                    </div>
+                    <div>
+                        <label for="skin-input" class="label">Skin</label>
+                        <input type="Text" name="skin" id="skin-input" class="input">
+                    </div>
+                    <div>
+                        <label for="eyes-input" class="label">Eyes</label>
+                        <input type="Text" name="eyes" id="eyes-input" class="input">
+                    </div>
+                    <div>
+                        <label for="height-input" class="label">Height</label>
+                        <input type="Text" name="height" id="height-input" class="input">
+                    </div>
+                    <div>
+                        <label for="weight-input" class="label">Weight</label>
+                        <input type="Text" name="weight" id="weight-input" class="input">
+                    </div>
+                    <div>
+                        <label for="age-input" class="label">Age</label>
+                        <input type="Text" name="age" id="age-input" class="input">
+                    </div>
+                    <div>
+                        <label for="notes-input" class="label">Notes</label>
+                        <input type="Text" name="notes" id="notes-input" class="input">
+                    </div>
+                </section>
+            </div>
+            <section class="section">
+                <div class="prev-next-buttons">
+                    <div class="button is-danger is-outlined is-pulled-left prev-button">Previous</div>
+                    <div class="button is-pulled-right next-button">Next</div>
+                </div>
+            </section>
+            <section class="hidden" display="none">
+                <input type="number" name="race" id="race-input" />
+                <input type="number" name="specialization" id="spec-input" />
+                <input type="number" name="pokemon" id="poke-input" />
+            </section>
+        </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

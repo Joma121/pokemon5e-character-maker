@@ -1,6 +1,34 @@
 /* ==Imports== */
 /* Bulma */
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+
+/* Custom Font */
+ 
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-muscles:before {
+    content: "\e900";
+  }
+  .icon-pokeball2:before {
+    content: "\e901";
+  }
+  .icon-iconfinder_03-_Pokestop_-_PokeBall_-_Game_-_Pokemon_-_Pokemongo_1543571:before {
+    content: "\e902";
+  }
+  
 /* ==Imports End== */
 
 /* Navbar adjustments */
@@ -42,6 +70,18 @@
 .modal-content, .modal-content .box {
     display: flex;
     justify-content: center;
+}
+
+.logout-button{
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+}
+
+.logout-button:hover{
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
 }
 
 /* Body */
@@ -94,7 +134,173 @@ min-height: calc(100vh - 200px);
 /* buttons scale */
 button {
     transition: all .2s ease-in-out;
+    box-shadow: 0 !important;
 }
 button:hover {
     transform: scale(1.05);
+    box-shadow: 0 !important;
+}
+
+div.button.is-outlined{
+    color:#ee1515;
+}
+
+div.button {
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+    transition: all .2s ease-in-out;
+    box-shadow: 0;
+}
+div.button:hover {
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+    transform: scale(1.05);
+}
+
+div.button.is-outlined{
+    color:#ee1515;
+}
+
+div.button.is-outlined:hover {
+    background-color:#ee1515 !important;
+    border-color: #222224 !important;
+    color:#f0f0f0 !important;
+}
+
+.icon-muscles:before {
+    content: "\e900";
+  }
+
+
+.steps-marker.is-hollow {
+    text-decoration: none;
+    color: #222224 !important;
+}
+
+/* New Character */
+.header-bar p{
+    background-color: #ee1515;
+    color: #f0f0f0;
+    border: solid 2px #222224;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.race-card .card-header .card-header-title {
+    color: #f0f0f0 !important;
+}
+
+.race-card .card-header{
+    background-color: #222224D9;
+}
+
+.race-card .card-header .card-header-title{
+    display: flex;
+}
+.race-card .card-header .card-header-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.race-card {
+    margin-top: 5px;
+}
+
+div.message-header[data-action="collapse-race"]:hover {
+    cursor: pointer;
+}
+
+div.message-header[data-action="collapse-trainer"]:hover {
+    cursor: pointer;
+}
+
+p.rf-short {
+    border-bottom: solid 2px #22222440 !important;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.display-area .display-description {
+    margin-left: 30px;
+}
+
+.piece-header {
+    background-color: #222224D9 !important;
+    color: #f0f0f0 !important;
+    padding: 10px;
+    /* border: solid 2px #ee1515; */
+    border-radius: 2px;
+
+}
+
+.column>.content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.content.indent>.message {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.message-footer.is-pulled-right {
+    margin: 10px;
+}
+
+#trainer-features, #specializations {
+    cursor: pointer;
+}
+
+span.bold-me {
+    font-weight: bold !important;
+}
+
+#ability-content {
+    display: flex !important;
+    justify-content: space-evenly !important;
+}
+#ability-content div {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.selected-highlight {
+    background-color: #ee1515 !important;
+}
+
+#pokemon-stats {
+    display:flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    padding: 0!important;
+}
+#pokemon-stats div{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0!important;
+}
+
+.title.is-4 {
+    margin-bottom: 0;
+    padding: 0!important;
+}
+
+#pokemon-card{
+    display: flex;
+    flex-flow:row;
+    justify-content: space-between;
+}
+#sideways{
+    padding:0;
+    justify-content: flex-end;
+    align-self: center;
+    transform: rotate(-90deg);
 }

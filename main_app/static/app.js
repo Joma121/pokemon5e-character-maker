@@ -3,6 +3,7 @@ $('#mobile-nav').click(function(event){
     $('.navbar-burger').toggleClass('is-active');
 })
 
+/* Logout Modal control */
 $('#open-logout-modal').click(function(event){
     $('#logout-modal').toggleClass('is-active');
 })
@@ -10,8 +11,10 @@ $('#open-logout-modal').click(function(event){
 $('.close-logout-modal').click(function(event){
     $('#logout-modal').toggleClass('is-active');
 })
+/* Logout Modal control End */
 
 
+/* Login and Signup forms */
 /**
  * Login Email - Inject Bulma classes to django-auth form  
  */ 
@@ -129,3 +132,103 @@ $("#id_password1").change(function(event){
         }
     }
 })
+
+/* Login and Signup form End */
+
+/* New Character form */
+// Default display on new character
+$(".display-area").hide().first().next().next().next().show();
+
+const switchStep = function switchStep(event) {
+    if($(this).hasClass('is-active')) return;
+    const chosenClass = this.className.match(/\b[^\s]+-box\b/);
+    $('.display-area').hide();
+    $('.'+chosenClass).show();
+    $('.steps-marker').removeClass("is-hollow");
+    $('.steps-segment').removeClass("is-active");
+    $(this).addClass("is-hollow");
+    $(this).parent().addClass("is-active");
+}
+
+$('.steps-marker').click(switchStep);
+
+// Top level accordion on form
+$("header[data-action='collapse']").click(function(){
+    
+    if($(this).find("i").hasClass("fa-plus")){
+        $(this).find("i").addClass("fa-minus").removeClass("fa-plus");
+    } else {
+        $(this).find("i").addClass("fa-plus").removeClass("fa-minus");
+    }
+    const uncollapseId = $(this).attr("data-target");
+    if(!$(uncollapseId).hasClass("is-active")){
+        $(".is-collapsible.is-active").removeClass("is-active").prev().find("i").addClass("fa-plus").removeClass("fa-minus");
+        $(uncollapseId).addClass("is-active")
+        $('body, html').animate({
+            scrollTop: $(uncollapseId).offset().top -150
+        }, 600);
+    } else {
+        $(uncollapseId).removeClass("is-active");
+    }
+})
+
+// Race sub-accordions
+$("div.message-header[data-action='collapse-race']").click(function(){
+    console.log(this)
+    if($(this).children("i").hasClass("fa-plus")){
+        $(this).children("i").addClass("fa-minus").removeClass("fa-plus");
+    } else {
+        $(this).children("i").addClass("fa-plus").removeClass("fa-minus");
+    }
+    const collapseId = $(this).attr("data-target");
+    $(collapseId).toggleClass("is-active")
+})
+
+// Trainer Features box toggle
+const toggleNext = function toggleNext(){
+    if($(this).children("i").hasClass("fa-plus")){
+        $(this).children("i").addClass("fa-minus").removeClass("fa-plus");
+    } else {
+        $(this).children("i").addClass("fa-plus").removeClass("fa-minus");
+    }
+    $(this).next().toggleClass("is-active");
+}
+
+$("#trainer-features").click(toggleNext);
+$("#specializations").click(toggleNext);
+
+// Trainer class features sub accordions
+$("div.message-header[data-action='collapse-trainer']").click(function(){
+    if($(this).children("i").hasClass("fa-plus")){
+        $(this).children("i").addClass("fa-minus").removeClass("fa-plus");
+    } else {
+        $(this).children("i").addClass("fa-plus").removeClass("fa-minus");
+    }
+    const collapseId = $(this).attr("data-target");
+    $(collapseId).toggleClass("is-active")
+})
+
+$("div[data-action='select']").click(function(){
+    const data = $(this).attr("id").split("-");
+    const target = data[0]+"-input";
+    const value = data[1];
+
+    console.log($("div.select-"+data[0]+"[data-action='select']"))
+    $("div.select-"+data[0]+"[data-action='select']").text("Select").removeClass("is-outlined is-danger");
+    $(this).text("Selected").addClass("is-outlined is-danger");
+
+    if(data[0] == "race"){
+        $(".race-card .card-header").removeClass("selected-highlight");
+        $(this).parent().parent().parent().children("header").addClass("selected-highlight")
+    } else if (data[0] == "spec"){
+        $(".spec-message .message-header").removeClass("selected-highlight");
+        $(this).parent().parent().prev().addClass("selected-highlight")
+    }
+
+    $('#'+target).val(value);
+    console.log($("#race-input"));
+})
+
+
+/* New Character form End */
+

@@ -4,34 +4,43 @@
 
 /* Custom Font */
  
-  [class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
-    speak: never;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-  
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .icon-muscles:before {
-    content: "\e900";
-  }
-  .icon-pokeball2:before {
-    content: "\e901";
-  }
-  .icon-iconfinder_03-_Pokestop_-_PokeBall_-_Game_-_Pokemon_-_Pokemongo_1543571:before {
-    content: "\e902";
-  }
-  
+[class^="icon-"], [class*=" icon-"] {
+/* use !important to prevent issues with browser extensions that change fonts */
+font-family: 'icomoon' !important;
+speak: never;
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+
+/* Better Font Rendering =========== */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-muscles:before {
+content: "\e900";
+}
+.icon-pokeball2:before {
+content: "\e901";
+}
+.icon-iconfinder_03-_Pokestop_-_PokeBall_-_Game_-_Pokemon_-_Pokemongo_1543571:before {
+content: "\e902";
+}
 /* ==Imports End== */
 
-/* Navbar adjustments */
+/* === Body === */
+body {
+    margin: 0;
+    background-color: #f0f0f0;
+}
+main {
+min-height: calc(100vh - 200px);
+}
+
+
+/* === Navbar === */
 .pokeball-black {
     background-color: #222224;
 }
@@ -63,10 +72,9 @@
 .navbar-link:not(.is-arrowless)::after {
     border-color: #f0f0f0;
 }
-/* End Navbar */
+/* === End Navbar === */
 
-/* Logout Modal */
-
+/* === Logout Modal === */
 .modal-content, .modal-content .box {
     display: flex;
     justify-content: center;
@@ -83,29 +91,22 @@
     border-color: #222224;
     color:#f0f0f0;
 }
+/* === Logout Modal End === */
 
-/* Body */
-body {
-    margin: 0;
-}
-main {
-min-height: calc(100vh - 200px);
-}
 
-/* Footer */
+/* === Footer === */
 .footer {
     max-height: 50px !important;
 }
+/* === Footer End === */
 
-/* Home page */
-
-
-/* Auth error */
+/* === Auth Error === */
 .errorlist {
     color: #f14668;
 }
+/* === Auth Error End === */
 
-/* Login page */
+/* === Login page === */
 .box.container.login-box {
     max-width: 300px;
 }
@@ -118,7 +119,9 @@ min-height: calc(100vh - 200px);
 .login-button:hover {
     color: #f0f0f0;
 }
-/* Signup page */
+/* === Login End === */
+
+/* === Signup === */
 .box.container.signup-box {
     max-width: 300px;
 }
@@ -130,13 +133,14 @@ min-height: calc(100vh - 200px);
 .signup-button:hover {
     color: #f0f0f0;
 }
+/* === Signup End === */
 
-/* buttons scale */
-button {
+/* === Buttons === */
+button, .button {
     transition: all .2s ease-in-out;
     box-shadow: 0 !important;
 }
-button:hover {
+button:hover, .button:hover {
     transform: scale(1.05);
     box-shadow: 0 !important;
 }
@@ -169,6 +173,48 @@ div.button.is-outlined:hover {
     color:#f0f0f0 !important;
 }
 
+a.button.is-static {
+    border-color: #222224D9 !important;
+    color:#222224D9 !important;
+}
+a.button.is-outlined{
+    color:#ee1515;
+}
+
+a.button {
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+    transition: all .2s ease-in-out;
+    box-shadow: 0;
+}
+a.button:hover:not(.is-success) {
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+    transform: scale(1.05);
+}
+
+a.button.is-outlined:not(.is-success){
+    color:#ee1515;
+}
+
+a.button.is-outlined:hover:not(.is-success) {
+    background-color:#ee1515 !important;
+    border-color: #222224 !important;
+    color:#f0f0f0 !important;
+}
+
+a.button.is-static {
+    border-color: #222224D9 !important;
+    color:#222224D9 !important;
+}
+
+/* === Buttons End === */
+
+
+
+/* === New/Edit Character === */
 .icon-muscles:before {
     content: "\e900";
   }
@@ -179,13 +225,18 @@ div.button.is-outlined:hover {
     color: #222224 !important;
 }
 
-/* New Character */
 .header-bar p{
     background-color: #ee1515;
     color: #f0f0f0;
     border: solid 2px #222224;
     border-radius: 3px;
     padding-left: 10px;
+}
+
+.required-indicator{
+    color:#ee1515 !important;
+    font-size: large;
+    font-weight: bold;
 }
 
 .race-card .card-header .card-header-title {
@@ -232,11 +283,23 @@ p.rf-short {
 
 .piece-header {
     background-color: #222224D9 !important;
-    color: #f0f0f0 !important;
-    padding: 10px;
-    /* border: solid 2px #ee1515; */
+    color: #f0f0f0;
+    padding: 0 10px 4px 10px !important;
     border-radius: 2px;
+    font-size: x-large;
+    align-items: center;
+}
 
+.piece-header i {
+    margin-top: 7px;
+}
+
+.piece-header + .content {
+    background-color: white;
+}
+
+.piece-header + .content:not(.is-collapsible) {
+    padding-bottom: 10px;
 }
 
 .column>.content {
@@ -244,9 +307,14 @@ p.rf-short {
     padding-right: 10px;
 }
 
+.content.indent.is-active {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .content.indent>.message {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .message-footer.is-pulled-right {
@@ -260,15 +328,8 @@ p.rf-short {
 span.bold-me {
     font-weight: bold !important;
 }
-
-#ability-content {
-    display: flex !important;
-    justify-content: space-evenly !important;
-}
-#ability-content div {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+p.bold-me {
+    font-weight: bold !important;
 }
 
 .selected-highlight {
@@ -304,3 +365,113 @@ span.bold-me {
     align-self: center;
     transform: rotate(-90deg);
 }
+/* === New/Edit Character End === */
+
+/* === Show Character === */
+/* 
+.character-show {
+    display:flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    padding: 0!important;
+}
+.character-show div{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    padding: 0!important;
+}
+.character-show div#equipment-data{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    padding: 0!important;
+}
+.character-show div#equipment-data div{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    padding: 0!important;
+}
+
+.character-show .subtitle.is-5 {
+    border-bottom: solid 2px #22222440 !important;
+} */
+.piece-header-show {
+    background-color: #222224D9 !important;
+    color: #f0f0f0;
+    padding: 0 10px 4px 10px !important;
+    border-radius: 2px;
+    font-size: x-large;
+    align-items: center;
+}
+
+/* .piece-header-show i {
+    margin-top: 7px;
+} */
+
+.piece-header-show + .content {
+    background-color: white;
+}
+
+.columns.content{
+    margin: 0 !important;
+    margin-bottom: 20px !important;
+    padding: 0 !important;
+}
+
+.character-show div p {
+    margin:0 !important;
+}
+.char-name-huge {
+    font-size: 3em;
+    text-align: center;
+    margin: auto 0;
+}
+
+/* === Show Character End === */
+
+/* === My Characters === */
+.edit-delete-buttons {
+    width:100%;
+}
+
+.title-size {
+    font-size: larger;
+}
+
+.space-out {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.space-out p {
+    margin:0 !important;
+}
+.space-out span p{
+    display: flex;
+    justify-content: center;
+}
+.max-width {
+    max-width: 450px;
+    min-width: 350px;
+}
+
+.my-char-hr {
+    width: 95%;
+    margin: 0 auto;
+    background-color: #22222440 !important;
+}
+
+.my-char-body {
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+}
+
+.char-card {
+    margin-bottom: 50px;
+}
+/* === My Characters End === */
+

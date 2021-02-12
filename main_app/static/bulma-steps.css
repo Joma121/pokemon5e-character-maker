@@ -1141,7 +1141,7 @@
 }
 
 .steps-segment:after {
-  background-color: #23d160;
+  background-color: #ee1515;
 }
 
 .steps-segment.is-active:after {
@@ -1153,12 +1153,12 @@
 }
 
 .steps:not(.is-hollow) .steps-marker:not(.is-hollow) {
-  background-color: #23d160;
+  background-color: #ee1515;
   color: #fff;
 }
 
 .steps:not(.is-hollow) .steps-segment.is-active .steps-marker:not(.is-hollow) {
-  background-color: #23d160;
+  background-color: #ee1515;
   color: #fff;
 }
 
@@ -1169,12 +1169,12 @@
 
 .steps.is-hollow .steps-marker,
 .steps-marker.is-hollow {
-  border: 0.3em solid #23d160;
+  border: 0.3em solid #ee1515;
 }
 
 .steps.is-hollow .is-active .steps-marker,
 .steps .is-active .steps-marker.is-hollow {
-  border-color: #23d160;
+  border-color: #ee1515;
 }
 
 .steps.is-hollow .steps-segment.is-active ~ .steps-segment .steps-marker,
@@ -1253,13 +1253,13 @@
 }
 
 .steps:not(.is-hollow) .steps-marker:not(.is-hollow).is-success {
-  background-color: #23d160 !important;
+  background-color: #ee1515 !important;
   color: #fff !important;
 }
 
 .steps.is-hollow .steps-marker.is-success,
 .steps .steps-marker.is-hollow.is-success {
-  border-color: #23d160 !important;
+  border-color: #ee1515 !important;
 }
 
 .steps:not(.is-hollow) .steps-marker:not(.is-hollow).is-warning {
@@ -1284,7 +1284,7 @@
 
 @media screen and (max-width: 768px) {
   .steps:not(.is-horizontal).is-dashed .steps-segment:after, .steps:not(.is-horizontal) .steps-segment.is-dashed:after {
-    background: repeating-linear-gradient(0deg, #23d160, #23d160 5px, transparent 5px, transparent 10px);
+    background: repeating-linear-gradient(0deg, #ee1515, #ee1515 5px, transparent 5px, transparent 10px);
   }
   .steps:not(.is-horizontal).is-dashed .steps-segment.is-active:after,
   .steps:not(.is-horizontal).is-dashed .steps-segment.is-active ~ .steps-segment:after,
@@ -1295,7 +1295,7 @@
 }
 
 .steps.is-vertical.is-dashed .steps-segment:after, .steps.is-vertical .steps-segment.is-dashed:after {
-  background: repeating-linear-gradient(0deg, #23d160, #23d160 5px, transparent 5px, transparent 10px);
+  background: repeating-linear-gradient(0deg, #ee1515, #ee1515 5px, transparent 5px, transparent 10px);
 }
 
 .steps.is-vertical.is-dashed .steps-segment.is-active:after,
@@ -1308,7 +1308,7 @@
 @media screen and (min-width: 769px), print {
   .steps:not(.is-vertical).is-dashed .steps-segment:after,
   .steps:not(.is-vertical) .steps-segment.is-dashed:after {
-    background: repeating-linear-gradient(90deg, #23d160, #23d160 10px, transparent 10px, transparent 20px);
+    background: repeating-linear-gradient(90deg, #ee1515, #ee1515 10px, transparent 10px, transparent 20px);
   }
   .steps:not(.is-vertical).is-dashed .steps-segment.is-active:after,
   .steps:not(.is-vertical).is-dashed .steps-segment.is-active ~ .steps-segment:after,
@@ -1320,7 +1320,7 @@
 
 .steps.is-horizontal.is-dashed .steps-segment:after,
 .steps.is-horizontal .steps-segment.is-dashed:after {
-  background: repeating-linear-gradient(90deg, #23d160, #23d160 10px, transparent 10px, transparent 20px);
+  background: repeating-linear-gradient(90deg, #ee1515, #ee1515 10px, transparent 10px, transparent 20px);
 }
 
 .steps.is-horizontal.is-dashed .steps-segment.is-active:after,

@@ -17,4 +17,4 @@ class CustomUserChangeForm(UserChangeForm):
 class CharacterCreationForm(forms.ModelForm):
     class Meta:
         model = Character
-        fields = ('name', 'level', 'alignment', 'lifestyle', 'hair', 'skin', 'eyes', 'height', 'weight', 'age', 'notes', 'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma', 'trainer_license', 'pokedex', 'pokeballs', 'potions', 'pokedollars', 'pack', 'race', 'trainer_class', 'specialization', 'path', 'starter_pokemon', 'user')
+        fields = ('skill_one','skill_two','name', 'alignment', 'lifestyle', 'hair', 'skin', 'eyes', 'height', 'weight', 'age', 'notes', 'strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma', 'trainer_license', 'pokedex', 'pokeballs', 'potions', 'pokedollars', 'pack', 'race', 'specialization', 'starter_pokemon')

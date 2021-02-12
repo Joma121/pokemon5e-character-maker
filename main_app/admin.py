@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, Ability, Skill, Language, PokemonType, Move, RaceFeature, ClassFeature, PokemonAbility, Race, TrainerClass, Specialization, TrainerPath, Pokemon, Character, EggGroup
+from .models import CustomUser, Ability, Skill, Language, PokemonType, Move, RaceFeature, ClassFeature, PokemonAbility, Race, TrainerClass, Specialization, Pokemon, Character, EggGroup
 
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
@@ -24,7 +24,7 @@ admin.site.register(PokemonAbility)
 admin.site.register(Race)
 admin.site.register(TrainerClass)
 admin.site.register(Specialization)
-admin.site.register(TrainerPath)
+# admin.site.register(TrainerPath)
 admin.site.register(Pokemon)
 admin.site.register(Character)
 admin.site.register(EggGroup)

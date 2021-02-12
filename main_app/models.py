@@ -141,22 +141,22 @@ class Specialization(models.Model):
     def __str__(self):
         return self.name
 
-class TrainerPath(models.Model):
-    name = models.CharField(max_length=25)
-    description = models.TextField(max_length=700)
-    short_description = models.TextField(max_length=200)
-    first_feature_name = models.CharField(max_length=25)
-    first_description = models.TextField(max_length=700)
-    first_short_description = models.TextField(max_length=200)
-    second_feature_name = models.CharField(max_length=25)
-    second_description = models.TextField(max_length=700)
-    second_short_description = models.TextField(max_length=200)
-    third_feature_name = models.CharField(max_length=25)
-    third_description = models.TextField(max_length=700)
-    third_short_description = models.TextField(max_length=200)
+# class TrainerPath(models.Model):
+#     name = models.CharField(max_length=25)
+#     description = models.TextField(max_length=700)
+#     short_description = models.TextField(max_length=200)
+#     first_feature_name = models.CharField(max_length=25)
+#     first_description = models.TextField(max_length=700)
+#     first_short_description = models.TextField(max_length=200)
+#     second_feature_name = models.CharField(max_length=25)
+#     second_description = models.TextField(max_length=700)
+#     second_short_description = models.TextField(max_length=200)
+#     third_feature_name = models.CharField(max_length=25)
+#     third_description = models.TextField(max_length=700)
+#     third_short_description = models.TextField(max_length=200)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 class Pokemon(models.Model):
     name = models.CharField(max_length=20)
@@ -200,15 +200,15 @@ class Pokemon(models.Model):
 class Character(models.Model):
     name = models.CharField(max_length=20)
     level = models.IntegerField()
-    alignment = models.CharField(max_length=20)
-    lifestyle = models.CharField(max_length=60)
-    hair = models.TextField(max_length=300)
-    skin = models.TextField(max_length=300)
-    eyes = models.TextField(max_length=300)
-    height = models.CharField(max_length=10)
-    weight = models.CharField(max_length=10)
-    age = models.CharField(max_length=30)
-    notes = models.TextField(max_length=1000)
+    alignment = models.CharField(max_length=20, blank=True)
+    lifestyle = models.CharField(max_length=60, blank=True)
+    hair = models.TextField(max_length=300, blank=True)
+    skin = models.TextField(max_length=300, blank=True)
+    eyes = models.TextField(max_length=300, blank=True)
+    height = models.CharField(max_length=10, blank=True)
+    weight = models.CharField(max_length=10, blank=True)
+    age = models.CharField(max_length=30, blank=True)
+    notes = models.TextField(max_length=1000, blank=True)
     strength = models.IntegerField()
     dexterity = models.IntegerField()
     constitution = models.IntegerField()
@@ -221,10 +221,12 @@ class Character(models.Model):
     potions = models.IntegerField()
     pokedollars = models.IntegerField()
     pack = models.CharField(max_length=30)
+    skill_one = models.ForeignKey(Skill, related_name="skill_one", on_delete=models.SET_NULL, null=True)
+    skill_two = models.ForeignKey(Skill, related_name="skill_two", on_delete=models.SET_NULL, null=True)
     race = models.ForeignKey(Race, on_delete=models.SET_NULL, null=True)
     trainer_class = models.ForeignKey(TrainerClass, on_delete=models.SET_NULL, null=True)
     specialization = models.ForeignKey(Specialization, on_delete=models.SET_NULL, null=True)
-    path = models.ForeignKey(TrainerPath, on_delete=models.SET_NULL, null=True)
+    # path = models.ForeignKey(TrainerPath, on_delete=models.SET_NULL, null=True)
     starter_pokemon = models.ForeignKey(Pokemon, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 

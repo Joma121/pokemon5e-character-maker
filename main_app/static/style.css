@@ -1,12 +1,445 @@
+/* ==Imports== */
+/* Bulma */
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
 
+/* Custom Font */
+ 
+[class^="icon-"], [class*=" icon-"] {
+/* use !important to prevent issues with browser extensions that change fonts */
+font-family: 'icomoon' !important;
+speak: never;
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+
+/* Better Font Rendering =========== */
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-muscles:before {
+content: "\e900";
+}
+.icon-pokeball2:before {
+content: "\e901";
+}
+.icon-iconfinder_03-_Pokestop_-_PokeBall_-_Game_-_Pokemon_-_Pokemongo_1543571:before {
+content: "\e902";
+}
+/* ==Imports End== */
+
+/* === Body === */
+body {
+    margin: 0;
+    background-color: #f0f0f0;
+}
+main {
+min-height: calc(100vh - 200px);
+}
+
+
+/* === Navbar === */
 .pokeball-black {
     background-color: #222224;
 }
-.nav-color {
-    color: #f0f0f0 !important; 
+
+.navbar-menu.is-active {
+    
+    background-color: #222224;
 }
 
-.has-dopdown .is-hoverable {
- color: #f0f0f0 !important;
+.navbar-item, .navbar-link {
+    color: #f0f0f0 !important;
 }
+.navbar-item.has-dropdown:hover .navbar-link  {
+    background-color: #222224;
+}
+.navbar-link:hover {
+    background-color: #ee1515 !important;
+}
+
+.navbar-dropdown {
+    border-color: grey;
+    background-color: #222224;    
+}
+
+.navbar-item:hover {
+    background-color: #ee1515 !important;
+}
+
+.navbar-link:not(.is-arrowless)::after {
+    border-color: #f0f0f0;
+}
+/* === End Navbar === */
+
+/* === Logout Modal === */
+.modal-content, .modal-content .box {
+    display: flex;
+    justify-content: center;
+}
+
+.logout-button{
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+}
+
+.logout-button:hover{
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+}
+/* === Logout Modal End === */
+
+
+/* === Footer === */
+.footer {
+    max-height: 50px !important;
+}
+/* === Footer End === */
+
+/* === Auth Error === */
+.errorlist {
+    color: #f14668;
+}
+/* === Auth Error End === */
+
+/* === Login page === */
+.box.container.login-box {
+    max-width: 300px;
+}
+
+.login-button {
+    background-color: #ee1515;
+    color: #f0f0f0;
+}
+
+.login-button:hover {
+    color: #f0f0f0;
+}
+/* === Login End === */
+
+/* === Signup === */
+.box.container.signup-box {
+    max-width: 300px;
+}
+
+.signup-button {
+    background-color: #ee1515;
+    color: #f0f0f0;
+}
+.signup-button:hover {
+    color: #f0f0f0;
+}
+/* === Signup End === */
+
+/* === Buttons === */
+button, .button {
+    transition: all .2s ease-in-out;
+    box-shadow: 0 !important;
+}
+button:hover, .button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 !important;
+}
+
+div.button.is-outlined{
+    color:#ee1515;
+}
+
+div.button {
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+    transition: all .2s ease-in-out;
+    box-shadow: 0;
+}
+div.button:hover {
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+    transform: scale(1.05);
+}
+
+div.button.is-outlined{
+    color:#ee1515;
+}
+
+div.button.is-outlined:hover {
+    background-color:#ee1515 !important;
+    border-color: #222224 !important;
+    color:#f0f0f0 !important;
+}
+
+a.button.is-static {
+    border-color: #222224D9 !important;
+    color:#222224D9 !important;
+}
+a.button.is-outlined{
+    color:#ee1515;
+}
+
+a.button {
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+    transition: all .2s ease-in-out;
+    box-shadow: 0;
+}
+a.button:hover:not(.is-success) {
+    background-color: #ee1515;
+    border-color: #222224;
+    color:#f0f0f0;
+    transform: scale(1.05);
+}
+
+a.button.is-outlined:not(.is-success){
+    color:#ee1515;
+}
+
+a.button.is-outlined:hover:not(.is-success) {
+    background-color:#ee1515 !important;
+    border-color: #222224 !important;
+    color:#f0f0f0 !important;
+}
+
+a.button.is-static {
+    border-color: #222224D9 !important;
+    color:#222224D9 !important;
+}
+
+/* === Buttons End === */
+
+
+
+/* === New/Edit Character === */
+.icon-muscles:before {
+    content: "\e900";
+  }
+
+
+.steps-marker.is-hollow {
+    text-decoration: none;
+    color: #222224 !important;
+}
+
+.header-bar p{
+    background-color: #ee1515;
+    color: #f0f0f0;
+    border: solid 2px #222224;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.required-indicator{
+    color:#ee1515 !important;
+    font-size: large;
+    font-weight: bold;
+}
+
+.race-card .card-header .card-header-title {
+    color: #f0f0f0 !important;
+}
+
+.race-card .card-header{
+    background-color: #222224D9;
+}
+
+.race-card .card-header .card-header-title{
+    display: flex;
+}
+.race-card .card-header .card-header-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.race-card {
+    margin-top: 5px;
+}
+
+div.message-header[data-action="collapse-race"]:hover {
+    cursor: pointer;
+}
+
+div.message-header[data-action="collapse-trainer"]:hover {
+    cursor: pointer;
+}
+
+p.rf-short {
+    border-bottom: solid 2px #22222440 !important;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.display-area .display-description {
+    margin-left: 30px;
+}
+
+.piece-header {
+    background-color: #222224D9 !important;
+    color: #f0f0f0;
+    padding: 0 10px 4px 10px !important;
+    border-radius: 2px;
+    font-size: x-large;
+    align-items: center;
+}
+
+.piece-header i {
+    margin-top: 7px;
+}
+
+.piece-header + .content {
+    background-color: white;
+}
+
+.piece-header + .content:not(.is-collapsible) {
+    padding-bottom: 10px;
+}
+
+.column>.content {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.content.indent.is-active {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.content.indent>.message {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.message-footer.is-pulled-right {
+    margin: 10px;
+}
+
+#trainer-features, #specializations {
+    cursor: pointer;
+}
+
+span.bold-me {
+    font-weight: bold !important;
+}
+p.bold-me {
+    font-weight: bold !important;
+}
+
+.selected-highlight {
+    background-color: #ee1515 !important;
+}
+
+#pokemon-stats {
+    display:flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    padding: 0!important;
+}
+#pokemon-stats div{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: 0!important;
+}
+
+.title.is-4 {
+    margin-bottom: 0;
+    padding: 0!important;
+}
+
+#pokemon-card{
+    display: flex;
+    flex-flow:row;
+    justify-content: space-between;
+}
+#sideways{
+    padding:0;
+    justify-content: flex-end;
+    align-self: center;
+    transform: rotate(-90deg);
+}
+/* === New/Edit Character End === */
+
+/* === Show Character === */
+
+.piece-header-show {
+    background-color: #222224D9 !important;
+    color: #f0f0f0;
+    padding: 0 10px 4px 10px !important;
+    border-radius: 2px;
+    font-size: x-large;
+    align-items: center;
+}
+
+.piece-header-show + .content {
+    background-color: white;
+}
+
+.columns.content{
+    margin: 0 !important;
+    margin-bottom: 20px !important;
+    padding: 0 !important;
+}
+
+.character-show div p {
+    margin:0 !important;
+}
+.char-name-huge {
+    font-size: 3em;
+    text-align: center;
+    margin: auto 0;
+}
+
+/* === Show Character End === */
+
+/* === My Characters === */
+.edit-delete-buttons {
+    width:100%;
+}
+
+.title-size {
+    font-size: larger;
+}
+
+.space-out {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.space-out p {
+    margin:0 !important;
+}
+.space-out span p{
+    display: flex;
+    justify-content: center;
+}
+.max-width {
+    max-width: 450px;
+    min-width: 350px;
+}
+
+.my-char-hr {
+    width: 95%;
+    margin: 0 auto;
+    background-color: #22222440 !important;
+}
+
+.my-char-body {
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+}
+
+.char-card {
+    margin-bottom: 50px;
+}
+/* === My Characters End === */
+

@@ -1,0 +1,18 @@
+1,Bird Keeper,"You gain proficiency in Perception. Add a +1 bonus to all skill checks made by any of your flying Pokémon.",1,False,null,null,null
+2,Bug Maniac,"You gain Proficiency in Nature. Add a +1 bonus to all skill checks made by any of your bug Pokémon.",1,False,null,null,null
+3,Camper,"You gain proficiency in Survival. Add a +1 bonus to all skill checks made by any of your ground Pokémon.",1,False,null,null,null
+4,Dragon Tamer,"Increase your Wis by +1. Add a +1 bonus to all skill checks made by any of your dragon Pokémon.",1,False,null,null,null
+5,Engineer,"Increase your Int by +1. Add a +1 bonus to all skill checks made by any of your electric Pokémon.",1,False,null,null,null
+6,Pyromaniac,"Increase your Con by +1. Add a +1 bonus to all skill checks made by any of your fire Pokémon.",1,False,null,null,null
+7,Gardener,"You gain proficiency in Nature. Add a +1 bonus to all skill checks made by any of your grass Pokémon.",1,False,null,null,null
+8,Martial Artist,"Increase your Str, Con, or Dex by +1. Add a +1 bonus to all skill checks made by any of your fighting Pokémon.",1,False,null,null,null
+9,Mountaineer,"Increase your Str, Con, or Dex by +1. Add a +1 bonus to all skill checks made by any of your rock Pokémon.",1,False,null,null,null
+10,Mystic,"You gain proficiency in Arcana. Add a +1 bonus to all skill checks made by any of your ghost Pokémon.",1,False,null,null,null
+11,Steel Worker,"Increase your Str or Con by +1. Add a +1 bonus to all skill checks made by any of your steel Pokémon.",1,False,null,null,null
+12,Psychic,"You gain the ability to target one of your own Pokémon with the Telepathy spell once per day, ignoring components. Add a +1 bonus to all skill checks made by any of your psychic Pokémon.",1,True,null,null,null
+13,Swimmer,"Gain a swim speed equal to your movement speed. Add a +1 bonus to all skill checks made by any of your water Pokémon.",1,True,null,null,null
+14,Charmer,"Increase your Cha by +1. Add a +1 bonus to all skill checks made by any of your fairy Pokémon.",1,False,null,null,null
+15,Shadow,"Gain proficiency in the Deception or Stealth skill. Add a +1 bonus to all skill checks made by any of your dark Pokémon.",1,False,null,null,null
+16,Alchemist,"Gain proficiency in the Medicine or Deception skill. Add a +1 bonus to all skill checks made by any of your poison Pokémon.",1,False,null,null,null
+17,Team Player,"Increase any one of your ability scores by 1. Add a +1 bonus to all skill checks made by any of your normal Pokémon.",1,False,null,null,null
+18,Ice Skater,"Gain proficiency in the Performance or Persuasion skill. Add a +1 bonus to all skill checks made by any of your ice Pokémon.",1,False,null,null,null

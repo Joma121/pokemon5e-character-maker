@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<section class="section">
+    <div class="container content columns">
+        <section class="section column is-8 is-offset-2 character-show" id="character-top-display">
+            <div class="char-name-huge piece-header-show">
+                {{character.name}}
+            </div>
+            <div class="columns content">
+                <div class="column">
+                    <span class="bold-me">Class:</span> Trainer <br>
+                    <span class="bold-me">Level {{character.level}}<br>
+                    <span class="bold-me">Race:</span> {{character.race}} <br>
+                    <span class="bold-me">Hit Dice: {{character.level}}d{{character.trainer_class.hit_dice}}
+                </div>
+                <div class="column">
+                    <span class="bold-me">Specialization:</span> {{character.specialization}}<br>
+                    <span class="bold-me">Alignment:</span> {{character.alignment}}<br>
+                    <span class="bold-me">Lifestyle:</span> {{character.lifestyle}}<br>
+                </div>
+                <div class="column">
+                    <span class="bold-me">Hair:</span> {{character.hair}}<br>
+                    <span class="bold-me">Skin:</span> {{character.skin}}<br>
+                    <span class="bold-me">Eyes:</span> {{character.eyes}}<br>
+                </div>
+                <div class="column">
+                    <span class="bold-me">Height:</span> {{character.height}}<br>
+                    <span class="bold-me">Weight:</span> {{character.weight}}<br>
+                    <span class="bold-me">Age:</span> {{character.age}}<br>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <div>
+                        <div class="piece-header-show">
+                            <p>Abilities</p>
+                        </div>
+                        <div class="content columns">
+                            <div class="column">
+                                <div>
+                                    <span class="bold-me">STR:</span> {{character.strength}}<br>
+                                    <span class="bold-me">DEX:</span> {{character.dexterity}}<br>
+                                    <span class="bold-me">CON:</span> {{character.constitution}}<br>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div>
+                                    <span class="bold-me">INT:</span> {{character.intelligence}}<br>
+                                    <span class="bold-me">WIS:</span> {{character.wisdom}}<br>
+                                    <span class="bold-me">CHA:</span> {{character.charisma}}<br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div>
+                        <div class="piece-header-show">
+                            <p class="">Proficiencies</p>
+                        </div>
+                        <div class="content columns">
+                            <div class="column">
+                                <div>
+                                    <span class="bold-me">Skills</span>
+                                    <p>Animal Handling</p>
+                                    {{character.skill_one}}<br>
+                                    {{character.skill_two}}<br>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div>
+                                    <span class="bold-me">Saving Throws</span> <br>
+                                    Charisma                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div>
+                        <div class="piece-header-show">
+                            <p class="">Gear</p>
+                        </div>
+                        <div class="content columns">
+                        <div class="column">
+                            <div>
+                                {% if character.trainer_license %}<i class="fas fa-check"></i>{% else %}<i class="fas fa-times"></i>{% endif %} Trainer License<br>
+                                {% if character.pokedex %}<i class="fas fa-check"></i>{% else %}<i class="fas fa-times"></i>{% endif %} Pokedex<br>
+                                <i class="fas fa-check"></i> {{character.pack}} Pack<br>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div>
+                                {{character.pokeballs}} Pokeballs<br>
+                                {{character.potions}} Potions<br>
+                                {{character.pokedollars}} Pokedollars<br>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-half">
+                    <div>
+                        <div class="piece-header-show">
+                            <p>{{starter.name}} #{{starter.number}}</p>
+                        </div>
+                        <div class="content columns">
+                            <div class="column is-one-third">
+                                <div>
+                                    <span class="bold-me">Classification:</span> <br>
+                                    {{starter.classification}} | SR {{starter.specie_rating}} <br>
+                                    <span class="bold-me">Evolution:</span> <br>
+                                    {{starter.evolution_stage}}/{{starter.max_evolution_stage}} | ASI {{starter.ability_score_increase}} <br>
+                                </div>
+                            </div>
+                            <div class="column is-one-third">
+                                <div>
+                                    <p><span class="bold-me">STR:</span> {{starter.strength}}</p>
+                                    <p><span class="bold-me">DEX:</span> {{starter.dexterity}}</p>
+                                    <p><span class="bold-me">CON:</span> {{starter.constitution}}</p>
+                                </div>
+                            </div>
+                            <div class="column is-one-third">
+                                <div>
+                                    <p><span class="bold-me">INT:</span> {{starter.intelligence}}</p>
+                                    <p><span class="bold-me">WIS:</span> {{starter.wisdom}}</p>
+                                    <p><span class="bold-me">CHA:</span> {{starter.charisma}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-half">
+                    <div>
+                        <div class="piece-header-show">
+                            <p class="">Level 1 Specialization</p>
+                        </div>
+                        <div class="content columns">
+                            <div class="column">
+                                <div>
+                                    <span class="bold-me">{{character.specialization.name}}</span> <br>
+                                    <span>{{character.specialization.description}}</span> <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <div>
+                        <div class="piece-header-show">
+                            <p>Trainer Features</p>
+                        </div>
+                        <div class="content columns">
+                            <div class="column">                        
+                                {% for tf in trainerfeatures %}
+                                    {% if tf.level_acquired == 1 %}
+                                        <div class="block">
+                                            <span class="bold-me">{{tf.name}}</span> <br>
+                                            <span>{{tf.description}}</span> <br>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column">
+                    <div>
+                        <div class="piece-header-show">
+                            <p>Racial Features</p>
+                        </div>
+                        <div class="content columns">
+                            <div class="column">                    
+                                {% for rf in racefeatures %}
+                                    {% if rf.race.id == race.id %}
+                                        <div class="block">
+                                            <span class="bold-me">{{rf.name}}</span> <br>
+                                            <span>{{rf.description}}</span> <br>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-delete-buttons">
+                <a href="{% url 'edit_character' character.id %}" class="button is-pulled-right edit-button">Edit</a>
+                <div id="open-delete-modal" class="button is-danger is-outlined is-pulled-left delete-button open-delete-modal">Delete</div>
+            </div>
+        </section>       
+        <div class="modal is-clipped" id="delete-modal">
+            <div class="modal-background close-delete-modal"></div>
+            <div class="modal-content">
+                <div class="box">
+                    <div class="content">
+                        <h2 class="title">Delete {{character.name}}</h2>
+                        <p class="is-warning">Are you sure you would like to delete {{character.name}}?</p>                                
+                        <form action="{% url 'delete_character' character.id %}" method="POST">
+                            {% csrf_token %}
+                            <div class="button is-success is-outlined close-delete-modal">Cancel</div>
+                            <button type="submit" class="button is-pulled-right delete-button">Delete {{character.name}}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close is-large close-logout-modal" aria-label="close"></button>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+{% endblock %}

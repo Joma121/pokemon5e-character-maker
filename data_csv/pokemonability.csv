@@ -1,0 +1,22 @@
+1,Blaze,"This Pokémon doubles its STAB bonus when it has 25% or less of its maximum health.","Double STAB when HP <= 25%",False
+2,Solar Power,"Damage rolls for this Pokémon get an additional +2 during harsh sunlight.","+2 Damage durin harsh sunlight",True
+3,Rock Head,"This Pokemon takes no recoil damage","No recoil Damage",False
+4,Lightning Rod,"If this Pokemon or an ally within 30 feet is targeted with a direct electric-type, damage-dealing move, the Pokemon may use a reaction to redirect the target to itself and take half damage from it if it hits.","Use Reaction to take 1/2 damage from electric-type attack",False
+5,Battle Armor,"This Pokemon is immune to extra damage dealt by a Critical Hit","Negates incoming Critical Hit damage",True
+6,Run Away,"This Pokemon cannot be the target of an attack of opportunity.","Negates incoming AoO",False
+7,Adaptability,"When this Pokemon uses a move of its own type, it may roll the damage twice and choose either total","Choose from 2 damage rolls when using type-matching attack",False
+8,Anticipation,"When this Pokemon enters the battle, an opponent must reveal if it has a move that the Pokemon is vulnerable to.","Force opponent to reveal moves this Pokemon is vulnerable to.",True
+9,Synchronise,"If this Pokémon becomes burned, paralyzed, or poisoned, its attacker receives the negative status condition as well (if not immune).","Duplicates burned, paralyzed, and poison on opponent.",False
+10,Inner Focus,"This Pokemon is immune to flinching.","Immunity to Flinching.",False
+11,Magic Guard,"If this Pokémon is subjected to a move that forces it to make a saving throw to take only half damage, it instead takes no damage on a success.","1/2 Damage saving throws are 0 Damage instead",True
+12,Levitate,"This Pokemon is immune to ground moves.","Immunity to Ground moves",False
+13,Sand Veil,"This Pokémon is immune to Sandstorm damage. In addition, its AC increases by 2 in desert terrain, or during a Sandstorm.","Immunity to Sandstrom and AC +2 in desert",False
+14,Sand Rush,"This Pokémon is immune to Sandstorm damage, and its speed is doubled in desert terrain, or during a Sandstorm.","Immunity to Sandstorm and Spd x2 in desert",True
+15,Static,"When this Pokémon is hit by a melee attack, roll a d4. On a result of 4, the attacker takes an amount of electric damage equal to this Pokemon's proficiency bonus.","On 4 of d4 attacker takes Proficiency bonus as electric damage",False
+16,Snow Cloak,"This Pokémon is immune to Hail damage. It's AC is increased by 2 in arctic conditions, or when it is snowing or hailing.","Immunity to Hail, AC +2 in arctic",False
+17,Snow Warning,"When this Pokémon enters an outside battle, the weather immediately changes to hail for 5 rounds. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score.","Hails for 5 rounds when entering outside battle.",True
+18,Overgrow,"This Pokémon doubles its STAB bonus when it has 25% or less of its maximum health.","Double STAB when HP <= 25%",False
+19,Long Reach,"This Pokémon has an additional 5 feet of reach with all melee attacks and Attacks of Opportunity.","Reach +5ft",True
+20,Sap Sipper,"This Pokémon takes no damage from grass-type attacks. If hit by a grass type move, it takes no damage and instead absorbs the energy, granting advantage on its next attack.","Absorbs grass attack damage",False
+21,Hydration,"This Pokemon is unaffected by negative status ailments in water or during rainy conditions","When wet Immune to Status effects",False
+22,Gooey,"When this Pokémon is hit with a melee attack, roll 1d4. On a result of 3 or 4, the attacker's speed is reduced to 0 until the end of its next turn.","On 4 of d4 attacker Spd 0 until end of next turn.",True

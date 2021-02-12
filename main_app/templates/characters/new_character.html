@@ -3,7 +3,7 @@
 {% load static %}
 
 <section class="section">
-    <div class="columns is-mobile">
+    <div class="columns">
         <div class="column is-10 is-offset-1">
             <ul class="steps is-medium has-gaps has-content-centered">
                 <li class="steps-segment is-active">
@@ -24,24 +24,6 @@
                         <p class="">Trainer</p>
                     </div>
                 </li>
-                {% comment %} <li class="steps-segment">
-                    <a  class="steps-marker">
-                        <i class="fas fa-street-view"></i>
-                    </a>
-                    <div class="steps-content">
-                        <p></p>
-                        <p class="">Specialization</p>
-                    </div>
-                </li> {% endcomment %}
-                {% comment %} <li class="steps-segment">
-                    <a  class="steps-marker">
-                        <i class="fas fa-street-view"></i>
-                    </a>
-                    <div class="steps-content">
-                        <p></p>
-                    <p class="">Path</p>
-                    </div>
-                </li> {% endcomment %}
                 <li class="steps-segment">
                     <a class="steps-marker ability-box">
                         <i class="icon-muscles"></i>
@@ -74,16 +56,17 @@
     </div>
 </section>
 <section class="section">
-    <div class="columns is-mobile">
+    <div class="columns">
         <div class="column is-8 is-offset-2">
-            <form method="POST">
+            <form id="character-form" method="POST">
             {% csrf_token %}
-            <div class="race-box display-area" id="race-box">
+            <div class="race-box display-area is-active" id="race-box">
                 <div class="content header-bar">
                     <p class="is-size-5">Race</p>
                 </div>
                 <div class="display-description">
-                    <p>Please select a race:</p>
+                    <p>Please select a race:<span class="required-indicator">*</span></p>
+                    <p><span class="required-indicator">*</span>Means required.</p>
                 </div>
                 <section class="section">
                 {% for race in races %}
@@ -130,11 +113,12 @@
                 </div>
                 <div class="display-description">
                     <p>The Pokémon Trainer class has the following features:</p>
+                    <p><span class="required-indicator">*</span>Means required.</p>
                 </div>
                 <section class="section">
-                    <div class="columns is-mobile">
+                    <div class="columns">
                         <div class="column">
-                            <div class="title is-4 piece-header">
+                            <div class="is-4 piece-header">
                                 <p>Hit Points</p>
                             </div>
                             <div class="content">
@@ -143,7 +127,7 @@
                                 <span class="bold-me">Hit Points when levelling:</span> 1d8 + Constitution Modifier
                             </div>
                             
-                        <div class="title is-4 piece-header">
+                        <div class="is-4 piece-header">
                             <p>Proficiencies</p>
                         </div>
                         <div class="content">
@@ -151,42 +135,30 @@
                             <span class="bold-me">Weapons:</span> None <br>
                             <span class="bold-me">Saving Throws:</span> Charisma <br>
                             <span class="bold-me">Skills:</span> Animal Handling <br>
-                            <span class="bold-me">Choose 2 More Skills:</span> 
-                            <select name="skill-one" id="skill1">
-                                {% for skill in skills %}
-                                    {% if skill.name != "Animal Handling" %}
-                                        <option value="{{skill.id}}">{{skill.name}}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            </select>
-                            <select name="skill-two" id="skill2">
-                                {% for skill in skills %}
-                                    {% if skill.name != "Animal Handling" %}
-                                        <option value="{{skill.id}}">{{skill.name}}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            </select>
+                            <span class="bold-me">Choose 2 More Skills:<span class="required-indicator">*</span></span> 
+                                {{character_form.skill_one}}
+                                {{character_form.skill_two}}
                         </div>
                         </div>
                         <div class="column">
-                            <div class="title is-4 piece-header">
+                            <div class="is-4 piece-header">
                                 <p>Starting Equipment</p>
                             </div>
                             <div class="content">
-                                <input type="checkbox" name="trainers-license" id="trainers-license" {% if trainer.trainer_license %}checked{% endif %}>
+                                {{character_form.trainer_license}}
                                 <span>Trainer License</span> 
                                 <br>
-                                <input type="checkbox" name="pokedex" id="pokedex" {% if trainer.pokedex %}checked{% endif %}>
+                                {{character_form.pokedex}}
                                 <span>Pokedex</span>
                                 <br>
-                                <input type="number" max="99" min="0" name="pokeballs" id="pokeballs" value="5"/>
-                                <span>Pokeball(s)</span>
+                                {{character_form.pokeballs}}
+                                <span>Pokeball(s)</span><span class="required-indicator">*</span>
                                 <br>
-                                <input type="number" max="99" min="0" name="potions" id="potions" value="1"/>
-                                <span>Potion(s)</span>
+                                {{character_form.potions}}
+                                <span>Potion(s)</span><span class="required-indicator">*</span>
                                 <br>
-                                <input type="number" max="99" min="0" name="pokedollars" id="pokedollars" value=""/>
-                                <span>Pokedollar(s), 1000 + (100*4d4)</span>
+                                {{character_form.pokedollars}}
+                                <span>Pokedollar(s)<span class="required-indicator">*</span>, 1000 + (100*4d4)</span>
                                 <br>
                                 <select name="pack" id="pack">
                                     <option value="Dungeoneer">Dungeoneer Pack</option>
@@ -199,7 +171,7 @@
                     </div>
                     
                     
-                    <div id="trainer-features" class="title is-4 piece-header">
+                    <div id="trainer-features" class="is-4 piece-header">
                         Trainer Features <i class="fas fa-plus is-pulled-right"></i>
                     </div>
                     <div class="content indent is-collapsible">
@@ -218,8 +190,8 @@
                         {% endfor %}
                     </div>
                     
-                    <div id="specializations" class="title is-4 piece-header">
-                        Specializations <i class="fas fa-plus is-pulled-right"></i>
+                    <div id="specializations" class="piece-header is-vcentered">
+                        Specializations<span class="required-indicator">*</span> <i class="fas fa-plus is-pulled-right"></i>
                     </div>
                     <div class="content indent is-collapsible">
                         {% for specialization in specializations %}
@@ -232,7 +204,7 @@
                                             <p class="">{{specialization.description}}</p>
                                         </div>
                                         <div class="message-footer is-pulled-right">
-                                            <div id="spec-{{specialization.id}}" class="button select-spec" data-action="select">Select {{specializations.name}}</div>
+                                            <div id="specialization-{{specialization.id}}" class="button select-spec" data-action="select">Select {{specializations.name}}</div>
                                         </div>
                                     </div>
                             </article>
@@ -245,32 +217,45 @@
                     <p class="is-size-5">Abilities</p>
                 </div>
                 <div class="display-description">
-                    <p>Please enter your rolled or point-buy ability results:</p>
+                    <p>Enter your rolled or point-buy ability results:<span class="required-indicator">*</span></p>
+                    <p><span class="required-indicator">*</span>Means required.</p>
                 </div>
-                <section class="section" id="ability-content">
-                    <div>
-                        <input type="number" value="10" max="20" min="1" name="strength" id="strength-input">
-                        <label for="strength-input" class="label">Strength</label>
+                <section class="section level" id="ability-content">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            {{character_form.strength}}
+                            <label for="strength-input" class="label">Strength</label>
+                            </div>
+                        </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            {{character_form.dexterity}}
+                            <label for="dexterity-input" class="label">Dexterity</label>
+                        </div>
                     </div>
-                    <div>
-                        <input type="number" value="10" max="20" min="1" name="dexterity" id="dexterity-input">
-                        <label for="dexterity-input" class="label">Dexterity</label>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            {{character_form.constitution}}
+                            <label for="constitution-input" class="label">Constitution</label>
+                        </div>
                     </div>
-                    <div>
-                        <input type="number" value="10" max="20" min="1" name="constitution" id="constitution-input">
-                        <label for="constitution-input" class="label">Constitution</label>
+                    <div class="level-item has-text-centered"> 
+                        <div>
+                            {{character_form.intelligence}}
+                            <label for="intelligence-input" class="label">Intelligence</label>
+                        </div>
                     </div>
-                    <div>
-                        <input type="number" value="10" max="20" min="1" name="intelligence" id="intelligence-input">
-                        <label for="intelligence-input" class="label">Intelligence</label>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            {{character_form.wisdom}}
+                            <label for="wisdom-input" class="label">Wisdom</label>
+                        </div>
                     </div>
-                    <div>
-                        <input type="number" value="10" max="20" min="1" name="wisdom" id="wisdom-input">
-                        <label for="wisdom-input" class="label">Wisdom</label>
-                    </div>
-                    <div>
-                        <input type="number" value="10" max="20" min="1" name="charisma" id="charisma-input">
-                        <label for="charisma-input" class="label">Charisma</label>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            {{character_form.charisma}}
+                            <label for="charisma-input" class="label">Charisma</label>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -279,7 +264,8 @@
                     <p class="is-size-5">Pokemon</p>
                 </div>
                 <div class="display-description">
-                    <p>Choose your starting Pokemon:</p>
+                    <p>Choose your starting Pokemon:<span class="required-indicator">*</span></p>
+                    <p><span class="required-indicator">*</span>Means required.</p>
                 </div>
                 <section class="section">
                     {% for pokemon in pokemons %}
@@ -310,7 +296,7 @@
                                 </div>
                             </div>
                             <div id="sideways">
-                                <div id="poke-{{pokemon.id}}" class="button is-large select-pokemon" data-action="select">Choose</div>
+                                <div id="starter_pokemon-{{pokemon.id}}" class="button is-large select-pokemon" data-action="select">Choose</div>
                             </div>
                         </div>
                     {% endfor %}
@@ -322,48 +308,63 @@
                 </div>
                 <div class="display-description">
                     <p>Describe your Trainer:</p>
+                    <p><span class="required-indicator">*</span>Means required.</p>
                 </div>
                 <section class="section">
                     <div>
+                        <label for="name-input" class="label">Name<span class="required-indicator">*</span></label>
+                        {{character_form.name}}
+                    </div>
+                    <div>
+                        <label for="alignment-input" class="label">Alignment</label>
+                        {{character_form.alignment}}
+                    </div>
+                    <div>
+                        <label for="lifestyle-input" class="label">Lifestyle</label>
+                        {{character_form.lifestyle}}
+                    </div>
+                    <div>
                         <label for="hair-input" class="label">Hair</label>
-                        <input type="Text" name="hair" id="hair-input" class="input">
+                        {{character_form.hair}}
                     </div>
                     <div>
                         <label for="skin-input" class="label">Skin</label>
-                        <input type="Text" name="skin" id="skin-input" class="input">
+                        {{character_form.skin}}
                     </div>
                     <div>
                         <label for="eyes-input" class="label">Eyes</label>
-                        <input type="Text" name="eyes" id="eyes-input" class="input">
+                        {{character_form.eyes}}
                     </div>
                     <div>
                         <label for="height-input" class="label">Height</label>
-                        <input type="Text" name="height" id="height-input" class="input">
+                        {{character_form.height}}
                     </div>
                     <div>
                         <label for="weight-input" class="label">Weight</label>
-                        <input type="Text" name="weight" id="weight-input" class="input">
+                        {{character_form.weight}}
                     </div>
                     <div>
                         <label for="age-input" class="label">Age</label>
-                        <input type="Text" name="age" id="age-input" class="input">
+                        {{character_form.age}}
                     </div>
                     <div>
                         <label for="notes-input" class="label">Notes</label>
-                        <input type="Text" name="notes" id="notes-input" class="input">
+                        {{character_form.notes}}
                     </div>
                 </section>
             </div>
-            <section class="section">
-                <div class="prev-next-buttons">
-                    <div class="button is-danger is-outlined is-pulled-left prev-button">Previous</div>
-                    <div class="button is-pulled-right next-button">Next</div>
+            <section class="section prev-next-buttons">
+                <div class="">
+                    <div class="button is-danger is-outlined is-pulled-left is-static prev-button">Previous</div>
+                    <div class="button is-pulled-right trainer-box next-button">Next</div>
+                    <div class="button is-pulled-right" id="submit-character">Create Trainer</div>
                 </div>
             </section>
-            <section class="hidden" display="none">
-                <input type="number" name="race" id="race-input" />
-                <input type="number" name="specialization" id="spec-input" />
-                <input type="number" name="pokemon" id="poke-input" />
+            <section class="hidden">
+                {{character_form.race}}
+                {{character_form.specialization}}
+                {{character_form.starter_pokemon}}
+                {{character_form.pack}}
             </section>
         </form>
         </div>

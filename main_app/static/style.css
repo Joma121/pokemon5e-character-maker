@@ -368,35 +368,7 @@ p.bold-me {
 /* === New/Edit Character End === */
 
 /* === Show Character === */
-/* 
-.character-show {
-    display:flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    padding: 0!important;
-}
-.character-show div{
-    display: flex;
-    flex-flow: column;
-    justify-content: space-evenly;
-    padding: 0!important;
-}
-.character-show div#equipment-data{
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    padding: 0!important;
-}
-.character-show div#equipment-data div{
-    display: flex;
-    flex-flow: column;
-    justify-content: space-evenly;
-    padding: 0!important;
-}
 
-.character-show .subtitle.is-5 {
-    border-bottom: solid 2px #22222440 !important;
-} */
 .piece-header-show {
     background-color: #222224D9 !important;
     color: #f0f0f0;
@@ -405,10 +377,6 @@ p.bold-me {
     font-size: x-large;
     align-items: center;
 }
-
-/* .piece-header-show i {
-    margin-top: 7px;
-} */
 
 .piece-header-show + .content {
     background-color: white;

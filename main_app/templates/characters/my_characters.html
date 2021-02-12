@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="section">
+    <section class="section my-char-header">
+        <div class="title is-2">
+            My Characters
+            <span class="is-pulled-right">
+                <a href="{% url 'new_character' %}" class="button new-character">New Trainer</a>
+            </span>
+        </div>
+    </section>
+    <hr class="my-char-hr">
+    <section class="section my-char-body">
+        {% for char in characters %}
+            <div class="card max-width char-card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="title-size">{{char.name}}</span>
+                    </p>
+                    </button>
+                </header>
+                <div class="card-content">
+                    
+                    <div class="content space-out">
+                        <span>
+                            <p class="bold-me">Level</p>
+                            <p>{{char.level}}</p>
+                        </span>
+                        <span>
+                            <p class="bold-me">Race</p>
+                            <p>{{char.race}}</p>
+                        </span>
+                        <span>
+                            <p class="bold-me">Specialization</p>
+                            <p>{{char.specialization}}</p>
+                        </span>
+                        <span>
+                            <p class="bold-me">Starter</p>
+                            <p>{{char.starter_pokemon}}</p>
+                        </span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="{% url "show_character" char.id %}" class="card-footer-item">View</a>
+                    <a href="{% url "edit_character" char.id %}" class="card-footer-item">Edit</a>
+                    <a id="open-delete-{{char.id}}" class="card-footer-item open-delete-modal">Delete</a>
+                </footer>
+                <div class="modal is-clipped delete-modal" id="delete-modal-{{char.id}}">
+                    <div class="modal-background close-delete-modal"></div>
+                    <div class="modal-content">
+                        <div class="box">
+                            <div class="content">
+                                <h2 class="title">Delete {{char.name}}</h2>
+                                <p class="is-warning">Are you sure you would like to delete {{char.name}}?</p>                                
+                                <form action="{% url 'delete_character' char.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="button is-success is-outlined close-delete-modal">Cancel</div>
+                                    <button type="submit" class="button is-pulled-right delete-button">Delete {{character.name}}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="modal-close is-large close-logout-modal" aria-label="close"></button>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+</section>
+
+{% endblock %}

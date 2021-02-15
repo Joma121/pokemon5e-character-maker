@@ -159,6 +159,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 
+DATABASE_URL = 'postgres://yiavtlavvhahyn:98894b9da22456cb287b768a698259da8de2bb735d06ef13397a73fd81546c5e@ec2-54-225-190-241.compute-1.amazonaws.com:5432/d81ju185cb280a'
 
 #Production Configuration
 if os.getcwd() == '/app':

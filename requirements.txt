@@ -57,7 +57,6 @@ requests-unixsocket==0.2.0
 SecretStorage==2.3.1
 service-identity==18.1.0
 simplejson==3.16.0
-six==1.14.0
 sos==4.0
 sqlparse==0.4.1
 ssh-import-id==5.10

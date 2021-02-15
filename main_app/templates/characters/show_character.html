@@ -3,7 +3,7 @@
 {% load static %}
 
 <section class="section">
-    <div class="container content columns">
+    <div class="columns">
         <section class="section column is-8 is-offset-2 character-show" id="character-top-display">
             <div class="char-name-huge piece-header-show">
                 {{character.name}}
@@ -194,10 +194,10 @@
             </div>
             <div class="edit-delete-buttons">
                 <a href="{% url 'edit_character' character.id %}" class="button is-pulled-right edit-button">Edit</a>
-                <div id="open-delete-modal" class="button is-danger is-outlined is-pulled-left delete-button open-delete-modal">Delete</div>
+                <div id="open-delete-{{character.id}}" class="button is-danger is-outlined is-pulled-left delete-button open-delete-modal">Delete</div>
             </div>
         </section>       
-        <div class="modal is-clipped" id="delete-modal">
+        <div class="modal is-clipped delete-modal" id="delete-modal-{{character.id}}">
             <div class="modal-background close-delete-modal"></div>
             <div class="modal-content">
                 <div class="box">

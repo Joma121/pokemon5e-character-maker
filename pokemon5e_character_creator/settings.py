@@ -158,6 +158,7 @@ LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 
 
+ALLOWED_HOSTS = ['pokemon5e-character-creator.herokuapp.com']
 #Production Configuration
 # if os.getcwd() == '/app':
 #     import dj_database_url

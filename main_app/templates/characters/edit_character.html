@@ -72,7 +72,11 @@
                 {% for race in races %}
                     {% if race.name != "none" %}
                     <div class="card race-card">
+                        {% if race.id == character.race.id %}
+                        <header data-target="#{{race.name}}-card" class="card-header is-hidden-fullscreen selected-highlight" data-action="collapse">
+                        {% else %}
                         <header data-target="#{{race.name}}-card" class="card-header is-hidden-fullscreen" data-action="collapse">
+                        {% endif %}
                                 <p class="card-header-title">
                                     {{race.name}} <span class="is-pulled-right"><i class="fas fa-plus is-pulled-right"></i></span>
                                 </p>
@@ -122,7 +126,7 @@
                                 <p>Hit Points</p>
                             </div>
                             <div class="content">
-                                <span class="bold-me">Hit Die:</span> d{{trainer.hit_dice}}<br>
+                                <span class="bold-me">Hit Die:</span> d8<br>
                                 <span class="bold-me">Hit Points at Level 1:</span> 8 + Constitution Modifier<br>
                                 <span class="bold-me">Hit Points when levelling:</span> 1d8 + Constitution Modifier
                             </div>
@@ -196,7 +200,11 @@
                     <div class="content indent is-collapsible">
                         {% for specialization in specializations %}
                             <article class="message spec-message">
+                                {% if specialization.id == character.specialization.id %}
+                                    <div class="message-header selected-highlight" data-target="#div-s{{specialization.id}}" data-action="collapse-trainer">
+                                {% else %}
                                     <div class="message-header" data-target="#div-s{{specialization.id}}" data-action="collapse-trainer">
+                                {% endif %}
                                         {{specialization.name}} <i class="fas fa-plus is-pulled-right"></i>
                                     </div>
                                     <div id="div-s{{specialization.id}}" class="message-body is-collapsible">
@@ -296,7 +304,11 @@
                                 </div>
                             </div>
                             <div id="sideways">
-                                <div id="starter_pokemon-{{pokemon.id}}" class="button is-large select-pokemon" data-action="select">Choose</div>
+                                {% if pokemon.id == character.starter_pokemon.id %}
+                                <div id="starter_pokemon-{{pokemon.id}}" class="button is-outlined is-danger is-large select-starter_pokemon" data-action="select">Selected</div>
+                                {% else %}
+                                <div id="starter_pokemon-{{pokemon.id}}" class="button is-large select-starter_pokemon" data-action="select">Choose</div>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -159,14 +160,14 @@ LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 
 
-ALLOWED_HOSTS = ['pokemon5e-character-creator.herokuapp.com']
 #Production Configuration
-# if os.getcwd() == '/app':
-#     import dj_database_url
-#     db_from_env = dj_database_url.config(conn_max_age=500)
-#     DATABASES['default'].update(db_from_env)
+if os.getcwd() == '/app':
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
 
-#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-#     ALLOWED_HOSTS = ['pokemon5e-character-creator.herokuapp.com']
-#     DEBUG = True
-#     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    ALLOWED_HOSTS = ['pokemon5e-character-creator.herokuapp.com']
+    DEBUG = True
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+django_heroku.settings(locals())

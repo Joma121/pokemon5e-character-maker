@@ -196,7 +196,7 @@ $("div.message-header[data-action='collapse-race']").click(function(){
     }, 600);
 })
 
-// Trainer Features box toggle
+// Trainer/Specialization Features box toggle
 const toggleNext = function toggleNext(){
     if($(this).children("i").hasClass("fa-plus")){
         $(this).children("i").addClass("fa-minus").removeClass("fa-plus");

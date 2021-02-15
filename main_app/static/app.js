@@ -24,7 +24,7 @@ $('.close-logout-modal').click(function(event){
 $('#id_login').addClass("input");
 $("#id_login").parent("p").addClass("block control");
 $('#id_login').prev("label").addClass("label");
-$("#id_login").change(function(event){
+$("#id_login").keyup(function(event){
     const mailformat = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
     if(!this.value.match(mailformat)){
         if(!$(this).hasClass("is-warning")){
@@ -52,7 +52,7 @@ $("#id_login").change(function(event){
 $("#id_email").addClass("input");
 $("#id_email").parent("p").addClass(`block control`);
 $("#id_email").prev("label").addClass("label");
-$("#id_email").change(function(event){
+$("#id_email").keyup(function(event){
     const mailformat = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
     if(!this.value.match(mailformat)){
         if(!$(this).hasClass("is-warning")){
@@ -81,7 +81,7 @@ $("#id_email").change(function(event){
 $("#id_password").addClass('input');
 $("#id_password").parent("p").addClass("control block");
 $("#id_password").prev("label").addClass("label");
-$("#id_password").change(function(event){
+$("#id_password").keyup(function(event){
     if(this.value.length < 8){
         if(!$(this).hasClass("is-warning")){
             $(this).removeClass('is-success');
@@ -110,7 +110,7 @@ $("#id_password1").addClass('input');
 $("#id_password1").parent("p").addClass("control block");
 $("#id_password1").parent("p").wrap("<div class='field'></div>")
 $("#id_password1").prev("label").addClass("label");
-$("#id_password1").change(function(event){
+$("#id_password1").keyup(function(event){
     if(this.value.length < 8){
         if(!$(this).hasClass("is-warning")){
             $(this).removeClass('is-success');

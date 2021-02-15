@@ -171,4 +171,4 @@ if os.getcwd() == '/app':
     ALLOWED_HOSTS = ['pokemon5e-character-creator.herokuapp.com']
     DEBUG = True
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-django_heroku.settings(locals())
+django_on_heroku.settings(locals())

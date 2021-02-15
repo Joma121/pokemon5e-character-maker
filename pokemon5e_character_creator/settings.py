@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'pokemon5e_character_creator.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pokemon5e_cc',
+        'NAME': os.path.join(BASE_DIR, 'pokemon5e_cc'),
     }
 }
 
@@ -127,7 +127,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILE_DIRS = [
+      "static/images", 
+      "static/fonts", 
+      "staticfiles",]
 
 # config/settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -152,3 +156,15 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
+
+
+#Production Configuration
+if os.getcwd() == '/app':
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
+
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    ALLOWED_HOSTS = ['pokemon5e-character-creator.herokuapp.com']
+    DEBUG = True
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

@@ -9,6 +9,9 @@
                 {% csrf_token %}
                 {{form.as_p}} 
                 <hr/>
+                <p class="block">
+                    Already have an account? <a href="{% url 'account_login' %}">Log in</a>
+                </p>
                 <div class="has-text-centered">
                     <button class="button signup-button" type="submit">Signup</button>
                 </div>

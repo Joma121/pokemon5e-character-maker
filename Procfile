@@ -1,1 +1,1 @@
-web: gunicorn pokemon5e-character-creator.wsgi --log-file -
+web: gunicorn pokemon5e-character-creator.wsgi --log-file --preload

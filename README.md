@@ -42,15 +42,16 @@ This application is a character creator for the Dungeons & Dragons 5th Edition s
 - Users interact via rating/liking characters 
 - Users interact via comments on characters
 
-<h2>Planned Technology</h2>
+<h2>Technology</h2>
 
 - Django
 - Postgresql
 - django-allauth application
-- Bulma css/javascript/
+- Bulma CSS
 - HTML
 - CSS
 - Javascript
+- jQuery
 
 <h2>Reference Material</h2>
 

@@ -19,7 +19,7 @@ This application is a character creator for the Dungeons & Dragons 5th Edition s
 
 
 
-<h2>User Story</h2>
+<h2>MVP - User Story</h2>
 
 - User can login/register
 - User taken to character list on login

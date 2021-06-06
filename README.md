@@ -31,6 +31,58 @@ Deployed Application - [Pokemon5e Character Creator](https://pokemon5e-character
 - User will be able to edit and delete characters they have created
 
 
+<h2>Snippet Highlight</h2>
+ 
+ Bulma does not have built in acordions, which were imperative to a manageable data display for users. I built working scalable accordions in jQuery to solve this issue. There are 2 controls, one for 'top level' accordions throughout the form, and one specificically for the race abilities, which are within the character race accordions. The ability sub-accordions are separated due to my design allowing them to have multiple open at once.
+ ```Javascript
+ // Top level accordion on form
+$("header[data-action='collapse']").click(function(){
+    //Change clicked header bar icon from minus to plus or plus to minus
+    if($(this).find("i").hasClass("fa-plus")){
+        $(this).find("i").addClass("fa-minus").removeClass("fa-plus");
+    } else {
+        $(this).find("i").addClass("fa-plus").removeClass("fa-minus");
+    }
+    
+    // Collapse other accordions' content and open clicked accordion content
+    const uncollapseId = $(this).attr("data-target");
+    if(!$(uncollapseId).hasClass("is-active")){
+        //Collapse other accordions and change header bar icon to minus
+        $(".is-collapsible.is-active").removeClass("is-active").prev().find("i").addClass("fa-plus").removeClass("fa-minus");
+        
+        // Show selected accordion's content
+        $(uncollapseId).addClass("is-active")
+        
+        // Scroll selected accordion to top of screen
+        $('body, html').animate({
+            scrollTop: $(uncollapseId).offset().top -150
+        }, 600);
+    } else {
+        // Hide content of clicked accordion when its already open
+        $(uncollapseId).removeClass("is-active");
+    }
+})
+
+// Character Race sub-accordions, separated as I wanted multiple character race accordions to be open at once
+$("div.message-header[data-action='collapse-race']").click(function(){
+    //Change clicked header bar icon from minus to plus or plus to minus
+    if($(this).children("i").hasClass("fa-plus")){
+        $(this).children("i").addClass("fa-minus").removeClass("fa-plus");
+    } else {
+        $(this).children("i").addClass("fa-plus").removeClass("fa-minus");
+    }
+    
+    //Grab content area and change style to display or hide
+    const collapseId = $(this).attr("data-target");
+    $(collapseId).toggleClass("is-active")
+    
+    //Scroll screen to display opened accordion near top of screen
+    $('body, html').animate({
+        scrollTop: $(collapseId).offset().top -150
+    }, 600);
+})
+ ```
+
 <h2>Technology</h2>
 
 - Django

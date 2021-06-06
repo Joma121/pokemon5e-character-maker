@@ -30,19 +30,6 @@ Deployed Application - [Pokemon5e Character Creator](https://pokemon5e-character
 - Saved characters can be viewed on character list and my characters
 - User will be able to edit and delete characters they have created
 
-<h2>Stretch Features</h2>
-
-- User Profile Page featuring that users' 
-- Sort/search functions
-- Registration with social accounts via allauth
-- Images for Pokemon, and Icons for Pokemon
-- Exportable and Printable Character sheet
-- Users able to duplicate characters, their own or other user's.
-- Fixed Class data points to be changeable for users.
-- Full roster of Starter Pokemon
-- Full moves data
-- Users interact via rating/liking characters 
-- Users interact via comments on characters
 
 <h2>Technology</h2>
 
